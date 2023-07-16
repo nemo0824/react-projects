@@ -11,11 +11,11 @@ function App() {
   // let [글제목2, d] = useState('파이썬 독학');
   
   let [글제목, 글제목변경] = useState(['남자 코트 추천', '강남우동 맛집', '파이썬독학']);
-  let [좋아요, 좋아요변경] = useState(0);
+  let [좋아요, 좋아요변경] = useState([0,0,0]);
+  
+  let [modal, setModal] = useState(false);
+  let [title, setTitle] = useState(0);
 
-  function 함수(){
-    console.log(1);
-  }
 
   
   //함수만드는거 ()=> {} 
@@ -57,7 +57,7 @@ function App() {
       <div className="black-nav">
         <h4 id={post} style={{color : 'blue'}}>블로그</h4>
       </div>
-
+{/* 
       <button onClick={()=>{
         let copy1 = [...글제목];
         copy1.sort((a,b) => a.toUpperCase()<b.toUpperCase() ? -1 : 1);
@@ -68,10 +68,10 @@ function App() {
       <button onClick={()=>{
         let copy = [...글제목];
         copy[0] = "여자코트추천";
-        글제목변경(copy); }}>글제목변경</button>
+        글제목변경(copy); }}>글제목변경</button> */}
         
 
-      <div className='list'>
+      {/* <div className='list'>
         <h4>{글제목[0]} <span onClick={()=>{좋아요변경(좋아요+1)}}>👍</span> {좋아요} </h4>
         <p>2월 17일 발행</p>
       </div>
@@ -82,27 +82,44 @@ function App() {
       <div className='list'>
         <h4>{글제목[2]}</h4>
         <p>2월 17일 발행</p>
-      </div>
+      </div> */}
 
-      <div className='modal'>
-        <h4>제목</h4>
-        <p>날짜</p>
-        <p>상세내용</p>
-      </div>
+        {
+          글제목.map(function(a, i){
+            return (
+            <div className='list' key={i}>
+            <h4 onClick={()=> {setModal(true); setTitle(i)}}>{글제목[i]} <span onClick={()=>{
+              let copy = [...좋아요];
+              copy[i] =  copy[i] +1;
+              좋아요변경(copy)
+            }}>👍</span> {좋아요[i]}</h4>
+            <p>2월 17일 발행</p>
+          </div>
+          )
+          })
+        }
 
 
-      <Modal></Modal>
+
+
+      <button onClick={()=> {setTitle(0)}}>글제목0</button>
+      <button onClick={()=> {setTitle(1)}}>글제목1</button>
+      <button onClick={()=> {setTitle(2)}}>글제목2</button>
+      {
+        modal == true ? <Modal title = {title} 글제목변경={글제목변경} 글제목 = {글제목}/> : null
+      }
     </div>
   );
 }
 
-
-function Modal(){
+function Modal(props){
   return(
     <div className='modal'>
-    <h4>제목</h4>
+    <h4>{props.글제목[props.title]}</h4>
     <p>날짜</p>
     <p>상세내용</p>
+    <button >글 수정 </button>
+    
   </div>
   //div 독립적으로 x
   )
