@@ -15,6 +15,7 @@ function App() {
   
   let [modal, setModal] = useState(false);
   let [title, setTitle] = useState(0);
+  let [입력값, 입력값변경] = useState('');
 
 
   
@@ -94,17 +95,29 @@ function App() {
               좋아요변경(copy)
             }}>👍</span> {좋아요[i]}</h4>
             <p>2월 17일 발행</p>
+            <button onClick={()=> {
+              let copy = [...글제목];
+              copy.splice(i, 1);
+              글제목변경(copy);
+            }}>삭제</button>
           </div>
           )
           })
         }
 
+        <input onChange={(e)=>{입력값변경(e.target.value);}}></input>
+        <button onClick={()=> {
+          let copy = [...글제목];
+          copy.unshift(입력값);
+          글제목변경(copy)
+
+          }}>글발행</button>
 
 
+          
 
-      <button onClick={()=> {setTitle(0)}}>글제목0</button>
-      <button onClick={()=> {setTitle(1)}}>글제목1</button>
-      <button onClick={()=> {setTitle(2)}}>글제목2</button>
+
+    
       {
         modal == true ? <Modal title = {title} 글제목변경={글제목변경} 글제목 = {글제목}/> : null
       }
