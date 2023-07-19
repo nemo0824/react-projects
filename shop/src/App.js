@@ -10,14 +10,17 @@ import { useState } from 'react';
 import data from './data.js';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import Detail from './Detail.js'
+import axios from 'axios';
 
 
 
 
 function App() {
 
-  let [shoes] = useState(data)
+  let [shoes, setshoes] = useState(data)
   let navigate = useNavigate();
+  let [count, setcount] = useState(1)
+  
 
 
 
@@ -50,16 +53,37 @@ function App() {
        })}
          </div>
        </div>
+       <button onClick={()=>{
+       
+        axios.get('https://codingapple1.github.io/shop/data2.json')
+        .then((result)=>{
+          console.log(result.data)
+          console.log(shoes)
+          let copy = [...shoes, ...result.data];
+          setshoes(copy);
+
+
+        }).catch(()=>{
+          console.log('실패')
+        }) 
+        
+
+        
+       
+
+      
+        
+       }}>더보기</button>
+
+        
        </>
       }/>
 
-      <Route path='/detail' element= {<Detail shoes = {shoes}></Detail>}/>
-      <Route path='/detail' element= {<Detail shoes = {shoes}></Detail>}/>
-      <Route path='/detail' element= {<Detail shoes = {shoes}></Detail>}/>
+      <Route path='/detail/:id' element= {<Detail shoes = {shoes}></Detail>}/>
       <Route Paht="*" element={<div>없는페이지요</div>}/>
       </Routes>
 
-    
+      
     
      
 
