@@ -69,7 +69,13 @@ function App() {
           console.log('실패')
         }) 
         
+       
 
+        
+
+
+        
+        
         
        
 
@@ -81,6 +87,16 @@ function App() {
        </>
       }/>
 
+    
+      
+      
+     
+
+    <Route path="/event" element={<EventPage/>}>
+      <Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>}></Route>
+      <Route path="two" element={<p>생일기념 쿠폰받기</p>}></Route>
+    </Route>
+      
       <Route path='/detail/:id' element= {
       <Context1.Provider value={{재고, shoes}}> 
       <Detail shoes = {shoes}></Detail>
@@ -89,7 +105,6 @@ function App() {
       </Routes>
 
       
-    
      
 
     </div>
@@ -109,7 +124,13 @@ function Card(props){
   )
 }
 
-
+function EventPage(){
+  return(
+    <div> 
+      <h4>오늘의 이벤트</h4>
+    </div>
+  )
+}
 
 
 export default App;
