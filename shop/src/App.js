@@ -6,13 +6,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import bg from './img/bg.png';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import data from './data.js';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import Detail from './Detail.js'
 import axios from 'axios';
 
-
+// 자식요소에 계속 props 쓰기 힘들기때문에 ContxtApi를 사용함 
+export let Context1 = createContext() // state 보관함
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   let [shoes, setshoes] = useState(data)
   let navigate = useNavigate();
   let [count, setcount] = useState(1)
+  let [재고] = useState([10,11,12])
   
 
 
@@ -79,7 +81,10 @@ function App() {
        </>
       }/>
 
-      <Route path='/detail/:id' element= {<Detail shoes = {shoes}></Detail>}/>
+      <Route path='/detail/:id' element= {
+      <Context1.Provider value={{재고, shoes}}> 
+      <Detail shoes = {shoes}></Detail>
+      </Context1.Provider>}/>
       <Route Paht="*" element={<div>없는페이지요</div>}/>
       </Routes>
 

@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
 
+import {Context1} from './App.js'
+
 function Detail(props){
   
 
@@ -62,21 +64,15 @@ function Detail(props){
             <Nav.Link eventKey="link0">버튼0</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="link1">버튼1</Nav.Link>
+            <Nav.Link eventKey="link1" >버튼1</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="link2">버튼2</Nav.Link>
+            <Nav.Link eventKey="link2"
+          >버튼2</Nav.Link>
           </Nav.Item>
         </Nav>
-        {
-          탭 == 0 ? <div>내용0</div> : null
-        }
-        {
-          탭 == 1 ? <div>내용1</div> : null
-        }
-        <div>내용0</div>
-        <div>내용1</div>
-        <div>내용2</div> 
+       
+        <TabContent 탭={탭}></TabContent>
 
            
 
@@ -85,5 +81,28 @@ function Detail(props){
      
     )
   }
+  
+  function TabContent({탭}){
+
+    let [fade, setFade] = useState('')
+
+    useEffect(()=> {
+      setTimeout(()=>{setFade('end')}, 100)
+      //automatic batching
+      // state변경함수들이 근처에 있으면 하나에 합쳐서 해주기때문에 
+      // 재렌더링을 계속하지않고 마지막에 제랜더링 한번만해주기때문
+      // 그래서 timeout으로 시가 ㄴ늘려주
+      return ()=>{
+        setFade('')
+      }
+    },[탭])
+
+    return (<div className={'start' + fade}>
+      {[<div>내용0</div>, <div>내용1</div>,<div>내용2</div>] [탭] }</div>)
+  }
+
+
+  
+  
 
   export default Detail;
