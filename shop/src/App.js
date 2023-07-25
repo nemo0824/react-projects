@@ -40,6 +40,9 @@ function App() {
 
   useEffect(()=> {
     localStorage.setItem('watched', JSON.stringify([]))
+
+    if()
+
   }, [])
   //누가 detail 페이지 접속하면
   //그페이지에 보이는 상품 id가져와서
