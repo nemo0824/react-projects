@@ -4,6 +4,9 @@ import { Nav } from "react-bootstrap";
 
 import {Context1} from './App.js'
 
+import { useDispatch } from "react-redux";
+
+
 function Detail(props){
   
 
@@ -21,12 +24,25 @@ function Detail(props){
    }, [Number])
 
   let {id} = useParams();
-  let 찾은상품 = props.shoes.find(function(x){
-    return x.id == id
-  });
+  let 찾은상품 = props.shoes.find(x => x.id == id);
+  
   let [count, setCount] = useState(0);
   let [alert, setalert] = useState(true);
   let [탭, 탭변경] = useState(0);
+  let dispatch = useDispatch()
+
+  useEffect(()=>{
+    
+    
+    let 꺼낸거 = localStorage.getItem('watched')
+    꺼낸거 = JSON.parse(꺼낸거)
+    꺼낸거.push(찾은상품.id)
+    //set 자료형은 중복을 없앤 array
+    꺼낸거 = new Set(꺼낸거)
+    꺼낸거 = Array.from(꺼낸거) // 어레이로 바꿔즈는 함수 
+    localStorage.setItem('watched', JSON.stringify(꺼낸거))
+  },[])
+
 
   useEffect(()=>{
     let a = setTimeout(()=>{ setalert(false)}, 2000)
@@ -56,7 +72,9 @@ function Detail(props){
             <h4 className="pt-5">{찾은상품.title}</h4>
             <p>{찾은상품.content}</p>
             <p>{찾은상품.price}원</p>
-            <button className="btn btn-danger">주문하기</button> 
+            <button className="btn btn-danger" onClick={()=>{
+             
+            }}>주문하기</button> 
           </div>
         </div>
         <Nav variant="tabs" defaultActiveKey="link0">

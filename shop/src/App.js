@@ -6,11 +6,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import bg from './img/bg.png';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import data from './data.js';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import Detail from './Detail.js'
 import axios from 'axios';
+import Cart from './Cart'
 
 // 자식요소에 계속 props 쓰기 힘들기때문에 ContxtApi를 사용함 
 export let Context1 = createContext() // state 보관함
@@ -22,6 +23,30 @@ function App() {
   let navigate = useNavigate();
   let [count, setcount] = useState(1)
   let [재고] = useState([10,11,12])
+  
+
+  let obj = {name : 'kim'}
+  JSON.stringify(obj)
+  localStorage.setItem('data', JSON.stringify(obj))
+  //array,object 는  localstorage저장하려면 json으로 바꾸면됨
+
+  let 꺼낸거 = localStorage.getItem('data')
+  console.log(JSON.parse(꺼낸거).name);
+  //꺼냈을때도 object로 다시 변환해야함  JSON.parse(꺼낸거)
+
+  // 최근 본상품 보여주기 상세페이지에서 봤던 번호상품들을 번호 localStorage에 저장하기
+  // 코딩하는방법
+
+
+  useEffect(()=> {
+    localStorage.setItem('watched', JSON.stringify([]))
+  }, [])
+  //누가 detail 페이지 접속하면
+  //그페이지에 보이는 상품 id가져와서
+  //localstorage에 watched 항목에 추가 
+
+
+  
   
 
 
@@ -71,7 +96,8 @@ function App() {
         
        
 
-        
+        //localstorage - 재접속해도 남아있음
+        //sessionstorage - 브라우저 끄면 날라감
 
 
         
@@ -102,6 +128,9 @@ function App() {
       <Detail shoes = {shoes}></Detail>
       </Context1.Provider>}/>
       <Route Paht="*" element={<div>없는페이지요</div>}/>
+
+      <Route path="/cart" element={ <Cart/>}/>
+
       </Routes>
 
       
