@@ -12,11 +12,13 @@ let data = [
     price : 139000
 },
 {
-    id: 1,
+    id: 2,
     title : "나이키 인빈서블 3 SE",
     content : "FJ1046-100",
     price : 209000
 }
 ]
+
+
 
 export default data;
