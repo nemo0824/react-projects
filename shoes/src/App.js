@@ -6,14 +6,17 @@ import { useState } from 'react';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import Detail from './routes/Detail'
 import {NavLink} from "react-router-dom";
-import data2 from './data2';
+
+
 
 
 function App() {
 
-  let [shoes,  setShoes]  = useState(data)
+  let [shoes,  setShoes]  = useState(data.filter((item, index)=>(
+    index <= 2
+  )))
   let navigate = useNavigate(); // 페이지 이동을 도와주는 navigate()
-  
+  let [count, setCount] = useState(1)
   
   return (
     <div className="App">
@@ -48,8 +51,42 @@ function App() {
             </div>
 
             <button onClick={()=>{
-              let copy = [...shoes , ...data2]
-              setShoes(copy);
+              let copy = [...data]
+             
+              // setShoes(copy)
+              setCount(count + 1)
+              
+              console.log(count)
+             
+              let show = copy.filter((item, index)=>(
+                index <= count* 3 + 2
+                ))
+                //0 1 2 3 4 5 6 7 
+                // 속아낸다 반복해요 
+                //count가늘어나도 8에 못간다 
+                //
+              setShoes(show)
+              console.log(show)
+              
+              //1. 더이상 불러올 데이터가 없을때 
+              //2. 버튼을 디스에이블 
+              //count == 1 seShoes(copy)
+              // let copy = []
+              //count == 2 
+
+              //한번눌렀을때  data2 
+              //두번눌렀을때 data3
+              //세번쨰 눌렀을때 버튼이 비활성화 되게할려고 
+              //count를 만든거임
+
+              //data 1에 세개 들어가있다 
+              //dat 2에 세개 들어가있다
+              // 상품더보기 버튼을 이용해서 
+
+              //  =< count * 3  보여주기 
+              // data에 다담고 
+              // 초기화면은 3개만 
+
               
             }}>상품 더보기 </button>
           </>
