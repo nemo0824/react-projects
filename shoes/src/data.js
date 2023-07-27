@@ -37,10 +37,23 @@ let data = [
 },
 {
     id: 6,
-    title : "a",
-    content : "a",
-    price : 123
+    title : "나이키 캄",
+    content : "FD4116-200",
+    price : 59000
+},
+{
+    id: 7,
+    title : "나이키 메트콘 9 AMP",
+    content : "DZ2616-001",
+    price : 179000
+},
+{
+    id: 8,
+    title : "나이키 페가수스 트레일 4 GORE-TEX",
+    content : "DJ7926-001",
+    price : 189000 
 }
+
 ]
 
 
