@@ -7,7 +7,7 @@ import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import Detail from './routes/Detail'
 import {NavLink} from "react-router-dom";
 import Cart from './routes/Cart';
-import loginForm from './routes/login';
+import Login from './routes/Login';
 
 
 
@@ -91,7 +91,7 @@ function App() {
         <Route path='/detail/:id' element={<Detail shoes={shoes} ></Detail>}></Route>
         <Route path='/cart' element={<Cart></Cart>}></Route>
         <Route path='/enroll' element={<div>회원가입</div>}></Route>
-        <Route path='/login' element={<div>로그인</div>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
         <Route path='*' element={<div> 404에러 없는페이지 </div>}></Route>
         
         <Route></Route>
