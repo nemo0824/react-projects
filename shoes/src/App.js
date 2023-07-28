@@ -6,10 +6,10 @@ import { useState } from 'react';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import Detail from './routes/Detail'
 import {NavLink} from "react-router-dom";
+import Cart from './routes/Cart';
+import loginForm from './routes/login';
 
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 
 
@@ -35,6 +35,11 @@ function App() {
             <Nav.Link onClick={()=> navigate('/shop')}>Shop</Nav.Link>
             <Nav.Link onClick={()=> navigate('/cart')}>Cart</Nav.Link>
             <Nav.Link onClick={()=> navigate('/detail')}>Detail</Nav.Link>
+      
+          </Nav>
+          <Nav>
+          <Nav.Link  className="enroll"onClick={()=> navigate('/enroll')}>회원가입</Nav.Link>
+          <Nav.Link  className="login" onClick={()=> navigate('/login')}>로그인</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -84,7 +89,9 @@ function App() {
       </Route>
         <Route path='/shop'></Route>
         <Route path='/detail/:id' element={<Detail shoes={shoes} ></Detail>}></Route>
-        <Route path='/cart'></Route>
+        <Route path='/cart' element={<Cart></Cart>}></Route>
+        <Route path='/enroll' element={<div>회원가입</div>}></Route>
+        <Route path='/login' element={<div>로그인</div>}></Route>
         <Route path='*' element={<div> 404에러 없는페이지 </div>}></Route>
         
         <Route></Route>
@@ -120,15 +127,7 @@ function About(){
   )
 }
 
-function ContainerExample() {
-  return (
-    <Container>
-      <Row>
-        <Col>인기상품</Col>
-      </Row>
-    </Container>
-  );
-}
+
 
 
 

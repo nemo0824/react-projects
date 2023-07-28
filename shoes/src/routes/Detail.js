@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 function Detail(props){
@@ -59,12 +59,15 @@ function Detail(props){
 //가져다 넣을려면 컴포넌트로 사용할수있음 
 //
 function tabComponent(props){
-    
-        if(props.tab ==0){
-          return  <div>내용0</div>
-        }else if(props.tab ==1){
+        
+        
+
+      
+        if(props.tab == 0){
+          return  <div>내용</div>
+        }else if(props.tab == 1){
           return  <div>내용1</div>
-        }else if(props.tab ==2){
+        }else if(props.tab == 2){
           return <div>내용2</div>
         }
         
