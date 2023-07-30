@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -11,6 +12,41 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.bg-img-real{
+  height: 20vw;
+  width: 100%;
+  background-image: url('./cc.jpg');
+  background-size: contain;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.CardForm{
+  display: flex;
+  justify-content: left;
+  margin-top: 50px;
+  max-height: 586px;
+
+}
+.Card{
+  width: 33vw;
+  margin-left: 100px;
+  height: 200px;
+  overflow-y: scroll;
+  
+}
+.Profile{
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.layout{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
 }
 
 .App-header {
