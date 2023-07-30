@@ -17,7 +17,7 @@
 .bg-img-real{
   height: 20vw;
   width: 100%;
-  background-image: url('./cc.jpg');
+  background-image: url('./bg.jpg');
   background-size: contain;
   background-color: black;
   background-repeat: no-repeat;
@@ -29,7 +29,7 @@
   justify-content: left;
   margin-top: 50px;
   max-height: 586px;
-
+ 
 }
 .Card{
   width: 33vw;
@@ -37,16 +37,26 @@
   height: 200px;
   overflow-y: scroll;
   
+  
 }
+.time{
+  font-size: 15px;
+}
+.event{
+  font-size: 30px;
+}
+
 .Profile{
   margin-top: 50px;
   margin-left: 100px;
+  
 }
 
 .layout{
   display: flex;
   justify-content: center;
   margin-bottom: 100px;
+  
 }
 
 .App-header {

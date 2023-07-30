@@ -12,7 +12,15 @@ function TodaySchedule() {
 let [ todayTimeLine, setTodayTimeLine] = useState(''); //시간 설정  state
     
 let schedule = [
- 
+  { time: '00:00', event: '취침' },
+  { time: '01:00', event: '취침' },
+  { time: '02:00', event: '취침' },
+  { time: '03:00', event: '취침' },
+  { time: '04:00', event: '취침' },
+  { time: '05:00', event: '취침' },
+  { time: '06:00', event: '취침' },
+  { time: '07:00', event: '취침' },
+  { time: '08:00', event: '취침' },
   { time: '09:00', event: '기상' },
   { time: '10:00', event: '식사' },
   { time: '10:30', event: 'React 강의' },
@@ -48,8 +56,8 @@ let getEventsAtCurrentTime = () => {
         <Card.Text>
         {getEventsAtCurrentTime().map((item) => (
           <div key={item.time}>
-            <p>{item.time}</p>
-            <p>{item.event}</p>
+            <p className='time'>{item.time}</p>
+            <p className='event'>{item.event}</p>
           </div>
         ))}
         </Card.Text>
