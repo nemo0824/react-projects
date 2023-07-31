@@ -29,7 +29,7 @@ function App() {
       <div className='layout'>
         <Profile/>
       <TextExample/>
-      </div>
+      </div> 
       
       <Routes>
       <Route path="/" elemnet={<div>메인</div>}></Route>
