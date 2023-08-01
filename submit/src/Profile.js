@@ -2,6 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, Navbar, Container, Nav, Card} from 'react-bootstrap'
 import profileImage from './LIM.jpeg';
+import IntroduceModal from './Modal'
 
 function Profile() {
     return (
@@ -14,7 +15,7 @@ function Profile() {
             <p>거주지 : 과천시 </p>
             <p>휴대폰 : 010-4146-5622</p>          
         </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary"><IntroduceModal/></Button>
         </Card.Body>
       </Card>
     );
