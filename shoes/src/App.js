@@ -92,7 +92,7 @@ function App() {
         <Route path='/cart' element={<Cart></Cart>}></Route>
         <Route path='/enroll' element={<div>회원가입</div>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
-        <Route path='*' element={<div> 404에러 없는페이지 </div>}></Route>
+        <Route path='*' element={<div> 404에러 없는페이지  dd</div>}></Route>
         
         <Route></Route>
       </Routes>
