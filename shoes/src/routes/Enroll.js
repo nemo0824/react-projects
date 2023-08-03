@@ -16,6 +16,11 @@ function Enroll() {
         <input type='password' placeholder='비밀번호 ' className='input'></input>
         <p className='enroll_list'>비밀번호 확인</p>
         <input type='password' placeholder='비밀번호 확인' className='input'></input>
+        <p className='enroll_list'>Email</p>
+        <input type='text' placeholder='email ' className='input'></input>
+        <p className='enroll_list'>Phone</p>
+        <input type='text' placeholder='Phone ' className='input'></input>
+        
         <input type="submit" value="로그인" className='btn-submit'></input>
        
       </form>

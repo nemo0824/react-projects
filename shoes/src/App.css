@@ -65,10 +65,32 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.content{
+  display: flex;
+  flex-direction: row;
+  border: 5px solid red;
+  height: 500px;
 }
+.left_content{
+  width: 20%;
+  border: 5px solid red;
+}
+.right_content{
+  width: 80%;
+  border: 5px solid red;
+}
+
+
+
+.shop_bg{
+  height: 600px;
+  background-image: url(../src/img/bg-img.png);
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

@@ -10,6 +10,7 @@ import Cart from './routes/Cart';
 import Login from './routes/Login';
 import Test from './routes/Test';
 import Enroll from './routes/Enroll';
+import Shop  from './routes/Shop';
 
 
 
@@ -88,7 +89,7 @@ function App() {
       }>
 
       </Route>
-        <Route path='/shop'></Route>
+        <Route path='/shop' element={<Shop></Shop>}></Route>
         <Route path='/detail/:id' element={<Detail shoes={shoes} ></Detail>}></Route>
         <Route path='/cart' element={<Cart></Cart>}></Route>
         <Route path='/enroll' element={<Enroll></Enroll>}></Route>
