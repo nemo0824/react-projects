@@ -6,6 +6,10 @@
   object-fit: cover;
  
 }
+.Login_form{
+  border-bottom: #282c34;
+  
+}
 
 .start{
   opacity: 0;
