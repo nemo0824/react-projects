@@ -9,6 +9,7 @@ import {NavLink} from "react-router-dom";
 import Cart from './routes/Cart';
 import Login from './routes/Login';
 import Test from './routes/Test';
+import Enroll from './routes/Enroll';
 
 
 
@@ -90,7 +91,7 @@ function App() {
         <Route path='/shop'></Route>
         <Route path='/detail/:id' element={<Detail shoes={shoes} ></Detail>}></Route>
         <Route path='/cart' element={<Cart></Cart>}></Route>
-        <Route path='/enroll' element={<div>회원가입</div>}></Route>
+        <Route path='/enroll' element={<Enroll></Enroll>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/Test' element={<Test></Test>}></Route>
         <Route path='*' element={<div> 404에러 없는페이지  </div>}></Route>

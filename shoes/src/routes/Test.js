@@ -34,9 +34,10 @@ function Test() {
                 <div className='alert alert-warning'>인기상품</div>
             <div className="row">
                 <div className="col-md-6">
-                
+                <img src={item.imgLocation}width="100%" height="60%"/>
                 </div>
                 <div className="col-md-6">
+                    
                     <h4 className="pt-5">{item.name}</h4>
                     <p>{item.itemCode}</p>
                     <p>{item.price}원</p>
