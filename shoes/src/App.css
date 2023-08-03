@@ -13,7 +13,7 @@
 }
 .Login_form{
   margin: auto;
-  width: 400px;
+  width: 500px;
   background-color: #EEEFF1;
   border-radius: 5px;
   text-align: center;
@@ -45,6 +45,10 @@
   margin-bottom: 10px;
   background-color: black;
   color: white;
+}
+.login_atage{
+ display: flex;
+ justify-content: space-around;
 }
 
 .enroll_list{
