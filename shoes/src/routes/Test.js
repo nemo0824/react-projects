@@ -10,8 +10,8 @@ function Test() {
       .get('/api/test')
       .then((response) => {
         console.log(response);
-        console.log(response.data[0]);
-        let copy = response.data[0]; // [] 
+        console.log(response.data);
+        let copy = response.data; // [] 
         setItem(copy);
       })
       .catch(() => {
