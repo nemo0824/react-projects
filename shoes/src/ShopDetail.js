@@ -24,7 +24,7 @@ function ShopDetail(props){
                     <button className="btn btn-danger">주문하기</button>
                 </div>
             </div>
-ㄴ
+
             <Nav variant="tabs" defaultActiveKey="link0">
                 <Nav.Item>
                     <Nav.Link eventKey="link0" onClick={()=>{

@@ -88,6 +88,13 @@ function App() {
             }}>상품 더보기 </button>
           </>
       }>
+        {/* 1. App.js에서 Route있던게 인식됨 그래서 Shop.js에 있는 Route안됨
+            2. 그렇다면 App.js로 옮겨야하는데 부모자식간에만 props가 되기때문에 안됨
+             지금 구조 - App.js -> shop -> shopCard -> shopDetail이기때문에 큰일남 
+             
+             => 따라서 구조를 다 재분배하던가 
+             => redux를 써야할수도있음 좆됌 일단 
+        */}
 
       </Route>
         <Route path='/shop' element={<Shop></Shop>}></Route>
