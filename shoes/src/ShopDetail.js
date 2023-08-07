@@ -1,13 +1,22 @@
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import { useEffect, useState } from "react";
-
+import axios from 'axios';
 
 function ShopDetail(props){
     let {itemNo} = useParams();
     let [tab, setTab] = useState(0)
-    console.log("props :" , props)
-    
+    // let [detailItem, setDetailItem] = useState([]); 
+
+    // console.log("props :" , props)
+    // useEffect(()=>{
+    //     axios.get('/shop/'+ itemNo).then(response =>{
+    //         setDetailItem(response.data.item);
+    //         console.log(response.data.item)
+    //         console.log(itemNo)
+    //       })
+    //       .catch(error => console.log(error));
+    // }, [])
     return(
         <div className="container">
                 <br></br>
