@@ -54,9 +54,7 @@ function Shop(props) {
           
             </div>
         </div>
-        <button onClick={()=>{
-          console.log(items)
-        }}>test</button>
+       
       </div>
       
     </>
