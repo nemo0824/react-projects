@@ -9,7 +9,8 @@ function ShopCard(props) {
     <div className="col-md-4">
       <div>
         <Link to={`/shop/${props.items.itemNo}`}>
-        <img src={props.items.imgLocation} width="80%" height="60%" ></img>
+        <img src={props.items.imgLocation} width="80%" height="60%" 
+        ></img>
         </Link>
         <h4>{props.items.itemCode}</h4>
         <p>{props.items.name}</p>

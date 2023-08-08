@@ -12,12 +12,12 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.1.1",
+    "react-redux": "^8.1.2",
     "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "proxy" : "http://3.38.209.77:8081",
+  "proxy": "http://3.38.209.77:8081",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

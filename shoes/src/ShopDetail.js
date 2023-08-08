@@ -6,17 +6,16 @@ import axios from 'axios';
 function ShopDetail(props){
     let {itemNo} = useParams();
     let [tab, setTab] = useState(0)
-    // let [detailItem, setDetailItem] = useState([]); 
+    const[selectedItem, setSelectedItem] = useState(); 
+    useEffect(()=>{
+        axios.get(`/shop/${itemNo}`).then(response =>{
+            setSelectedItem(response.data);
+            console.log(response.data)
+            console.log(selectedItem)
 
-    // console.log("props :" , props)
-    // useEffect(()=>{
-    //     axios.get('/shop/'+ itemNo).then(response =>{
-    //         setDetailItem(response.data.item);
-    //         console.log(response.data.item)
-    //         console.log(itemNo)
-    //       })
-    //       .catch(error => console.log(error));
-    // }, [])
+          })
+          .catch(error => console.log(error));
+    }, [])
     return(
         <div className="container">
                 <br></br>
@@ -24,12 +23,12 @@ function ShopDetail(props){
             <div className="row">
                 <div className="col-md-6">
                 
-                {/* <img src={props.items.imgLocation}width="100%" height="60%"/> */}
+                <img src={selectedItem?.imgLocation}width="100%" height="60%"/>
                 </div>
                 <div className="col-md-6">
-                    {/* <h4 className="pt-5">{props.items.name}</h4> */}
-                    {/* <p>{props.items.itemCode}</p> */}
-                    {/* <p>{props.items.price}원</p> */}
+                    <h4 className="pt-5">{selectedItem?.name}</h4>
+                    <p>{selectedItem?.itemCode}</p>
+                    <p>{selectedItem?.price}원</p>
                     <button className="btn btn-danger">주문하기</button>
                 </div>
             </div>

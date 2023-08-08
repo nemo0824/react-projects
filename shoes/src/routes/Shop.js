@@ -6,9 +6,10 @@ import ShopDetail from '../ShopDetail'
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 
 
-function Shop() {
+function Shop(props) {
   const [items, setItems] = useState([]);
   const [brand , setBrand] = useState([]);
+  
   
 
   useEffect(() => {
@@ -57,13 +58,12 @@ function Shop() {
           console.log(items)
         }}>test</button>
       </div>
-      <Routes>
-      <Route path='/shop/:itemNo' element={<ShopDetail items= {items}></ShopDetail>}></Route>
-      </Routes>
+      
     </>
     
   );
 }
+
 
 
 export default Shop;

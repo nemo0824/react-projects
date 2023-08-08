@@ -27,6 +27,7 @@ function App() {
   let navigate = useNavigate(); // 페이지 이동을 도와주는 navigate()
   let [count, setCount] = useState(1)
   
+  
   return (
     <div className="App">
      
@@ -102,7 +103,7 @@ function App() {
       </Route>
         <Route path='/shop' element={<Shop></Shop>}></Route>
         <Route path='/detail/:id' element={<Detail shoes={shoes} ></Detail>}></Route>
-        <Route path='/shop/:itemNo' element={<ShopDetail ></ShopDetail>}></Route>
+        <Route path='/shop/:itemNo' element={<ShopDetail></ShopDetail>}></Route>
         <Route path='/cart' element={<Cart></Cart>}></Route>
         <Route path='/enroll' element={<Enroll></Enroll>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
