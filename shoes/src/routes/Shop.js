@@ -11,7 +11,7 @@ function Shop(props) {
   const [brand , setBrand] = useState([]);
   
   
-
+// axios로 통신해서 데터 받기 현재 서버켜져있을때만 가능
   useEffect(() => {
     axios.get('/item') 
       .then(response => {

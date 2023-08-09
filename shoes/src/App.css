@@ -104,6 +104,9 @@
   background-position: center;
   object-fit: cover;
 }
+.alertMessage{
+  color: red;
+}
 
 
 

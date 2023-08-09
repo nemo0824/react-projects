@@ -38,7 +38,7 @@ function App() {
             <Nav.Link onClick={()=> navigate('/')}>home</Nav.Link>
             <Nav.Link onClick={()=> navigate('/shop')}>Shop</Nav.Link>
             <Nav.Link onClick={()=> navigate('/cart')}>Cart</Nav.Link>
-            <Nav.Link onClick={()=> navigate('/detail')}>Detail</Nav.Link>
+          
       
           </Nav>
           <Nav>
