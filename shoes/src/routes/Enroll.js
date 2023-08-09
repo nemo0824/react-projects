@@ -29,6 +29,24 @@ function Enroll() {
   const [isEmail, setEmail] = useState(false);
   const [isPhone, setPhone] = useState(false);
   
+  const [messageStyle, setMessageStyle] = useState({});
+
+  const onChangeName = (e) => {
+    const currentName = e.target.value;
+    setForm(currentName);
+    const idRegExp = /^[a-zA-z0-9]{1,5}$/;
+ 
+    if (!idRegExp.test(currentName)) {
+      setNameMessage("5글자 이하로 입력해주세요");
+      setMessageStyle({ color: 'red' });
+      setName(false);
+    } else {
+      setNameMessage("올바른 이름입니다 .");
+      setMessageStyle({ color: 'green' });
+      setName(true);
+    }
+  };
+
   const onChangeId = (e) => {
     const currentId = e.target.value;
     setForm(currentId);
@@ -36,16 +54,18 @@ function Enroll() {
  
     if (!idRegExp.test(currentId)) {
       setIdMessage("4-12사이 대소문자 또는 숫자만 입력해 주세요!");
+      setMessageStyle({ color: 'red' });
       setId(false);
     } else {
       setIdMessage("사용가능한 아이디 입니다.");
+      setMessageStyle({ color: 'green' });
       setId(true);
     }
   };
 
   const onChangePassword = (e)=>{
     const currentPassword = e.target.value
-    setPassword(currentPassword)
+    setForm(currentPassword);
     const passwordRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{7,25}$/;
   if(!passwordRegExp.test(currentPassword)) {
     setPasswordMessage("숫자 + 영문자 + 특수문자으로 7자리 이상 입력해주세요~")
@@ -75,10 +95,11 @@ function Enroll() {
         <h2 className='Login_title'>Shoe Market</h2>
         <h3> 회원가입 </h3>
         <p className='enroll_list'>이름</p>
-        <input type='text' placeholder='이름 ' className='input' value={form.userName} onChange={onChangeId}></input>
+        <input type='text' placeholder='이름 ' className='input' value={form.userName} onChange={onChangeName}></input>
+        <p className='alertMessage' style={messageStyle}>{nameMessage}</p>
         <p className='enroll_list'>아이디</p>
         <input type='text' placeholder='아이디 ' className='input' value={form.userId} onChange={onChangeId}></input>
-        <p className='alertMessage'>{idMessage}</p>
+        <p className='alertMessage' style={messageStyle}>{idMessage}</p>
         <p className='enroll_list'>비밀번호</p>
         <input type='password' placeholder='비밀번호 ' className='input' value={form.userPassword} onChange={onChangePassword}></input>
         <p className='enroll_list'>비밀번호 확인</p>
