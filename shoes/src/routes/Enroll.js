@@ -44,10 +44,10 @@ function Enroll() {
   const onChangeName = (e) => {
     const currentName = e.target.value;
     setuserName(currentName);
-    setForm({
+    setForm(form => ({
       ...form,
-      userName, 
-    });    
+      userName: currentName,
+    }));    
     const idRegExp = /^[a-zA-z0-9]{1,5}$/;
  
     if (!idRegExp.test(currentName)) {
@@ -64,10 +64,10 @@ function Enroll() {
   const onChangeId = (e) => {
     const currentId = e.target.value;
     setuserId(currentId);
-    setForm({
+    setForm(form => ({
       ...form,
-      userId, 
-    });    
+      userId: currentId,
+    }));    
     const idRegExp = /^[a-zA-z0-9]{4,12}$/;
  
     if (!idRegExp.test(currentId)) {
@@ -84,10 +84,10 @@ function Enroll() {
   const onChangePassword = (e)=>{
     const currentPassword = e.target.value    
     setuserPassword(currentPassword);
-    setForm({
+    setForm(form => ({
       ...form,
-      userPassword, 
-    });    
+      userPassword: currentPassword,
+    }));    
     const passwordRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{7,25}$/;
   if(!passwordRegExp.test(currentPassword)) {
     setPasswordMessage("숫자 + 영문자 + 특수문자으로 7자리 이상 입력해주세요~")
@@ -100,10 +100,10 @@ function Enroll() {
   const onChangePasswordCheck = (e)=>{
     const currentPasswordCheck = e.target.value
     setuserPasswordCheck(currentPasswordCheck);
-    setForm({
+    setForm(form => ({
       ...form,
-      userPasswordCheck, 
-    });    
+      userPasswordCheck: currentPasswordCheck,
+    }));    
     if(userPassword!==currentPasswordCheck){
       setPasswordCheckMessage("비밀번호가 동일하지 않습니다")
       setisPasswordCheck(false);
@@ -117,10 +117,10 @@ function Enroll() {
   const onChangePhone = (e) =>{
     const currentPhone = e.target.value
     setuserPhone(currentPhone);
-    setForm({
+    setForm(form => ({
       ...form,
-      userPhone, 
-    });    
+      userPhone: currentPhone,
+    }));    
     const phoneRegExp = /^010\d{8}$/;
     if(!phoneRegExp.test(currentPhone)){
       setPhoneMessage("8자리 숫자만 입력해주세요")
@@ -134,10 +134,10 @@ function Enroll() {
     const onChangeEmail = (e) =>{
       const currentEmail = e.target.value
       setuserEmail(currentEmail);
-      setForm({
+      setForm(form => ({
         ...form,
-        userEmail, 
-      });    
+        userEmail: currentEmail,
+      }));    
       const emailRegxp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if(!emailRegxp.test(currentEmail)){
         setEmailMessage("이메일 형식이 옳지 않습니다 ")
