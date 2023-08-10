@@ -150,15 +150,16 @@ function Enroll() {
 
 
   const register = ()=>{
-    axios.post('/member/enroll',
-    form
-    ) 
-      .then(response => {
-        console.log("회원가입 성공")
-      })
-      .catch(error => console.log(error));
-      console.log("회원가입 실패")
-  }
+    axios.post('/member/enroll', form)
+    .then(response => {
+      console.log("회원가입 성공");
+      alert("회원가입 성공하셨습니다!");
+    })
+    .catch(error => {
+      console.log("회원가입 실패", error);
+      alert("회원가입에 실패하였습니다. 다시 시도해주세요.");
+    });
+}
 
  
 
