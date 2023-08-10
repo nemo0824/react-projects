@@ -13,6 +13,8 @@ function Enroll() {
     userEmail : '',
     userPhone: '',
   })
+  
+
   // 오류메시지
   const [nameMessage, setNameMessage] = useState("");
   const [idMessage, setIdMessage] = useState("");
@@ -64,7 +66,7 @@ function Enroll() {
   };
 
   const onChangePassword = (e)=>{
-    const currentPassword = e.target.value
+    const currentPassword = e.target.value    
     setForm(currentPassword);
     const passwordRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{7,25}$/;
   if(!passwordRegExp.test(currentPassword)) {
@@ -75,11 +77,37 @@ function Enroll() {
     setPassword(true);
   }
 }
+  const onChangePhone = (e) =>{
+    const currentPhone = e.target.value
+    setFrom(currentPhone);
+    const phoneRegExp = /^010\d{8}$/;
+    if(!phoneRegExp.test(currentPhone)){
+      setPhoneMessage("8자리 숫자만 입력해주세요")
+      setPhone(false)
+    }else{
+      setPhoneMessage("옳은 전화번호 입니다")
+      setPhone(true);
+    }
+    
+  }
+    const onChangeEmail = (e) =>{
+      const currentEmail = e.target.value
+      setForm(currentEmail);
+      const emailRegxp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if(!emailRegxp.test(currentEmail)){
+        setEmailMessage("이메일 형식이 옳지 않습니다 ")
+        setEmail(false)
+      }else{
+        setEmailMessage("이메일 형식이 옳습니다")
+        setEmail(true)
+      }
+    }
+
 
   const register = ()=>{
-    axios.post('/member/enroll',{
+    axios.post('/member/enroll',
       form
-    }) 
+    ) 
       .then(response => {
         
       })
