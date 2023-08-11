@@ -33,6 +33,7 @@ function Shop(props) {
         
           <div className='left_content'>
             <div className='sidebar'>
+              <h3> 브랜드 </h3>
           
           {
               brand.map((brand,i)=>(

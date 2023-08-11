@@ -6,6 +6,7 @@
   object-fit: cover;
  
 }
+
 .Login_form-wrapper{
   margin-top: 100px;
   justify-content: center;
@@ -68,23 +69,27 @@
 .content{
   display: flex;
   flex-direction: row;
-  border: 5px solid red;
+  /* border: 5px solid red; */
   height: 100%;
 
 }
 
 .left_content {
   width: 20%;
-  border: 5px solid red;
+  /* border: 5px solid red; */
   position: relative;
-  height: 100%; /* 부모의 높이를 가득 채우기 위해 100%로 설정 */
+  height: 100%; 
 }
 
 .sidebar{
-  position: sticky;
-  top:0;
+  position: fixed;
+  top: calc(40% + 100px);
   left: 0;
   border: 5px solid blue;
+  width: 20%;
+  border-radius: 3rem;
+  z-index: 10;
+  
 }
 .row{
   list-style-type: none;
@@ -92,9 +97,8 @@
 .right_content{
   width: 80%;
   height: 100%;
-  border: 5px solid red;
+  /* border: 5px solid red; */
 }
-
 
 
 .shop_bg{
@@ -103,6 +107,7 @@
   background-size: cover;
   background-position: center;
   object-fit: cover;
+  z-index: 40;
 }
 .alertMessage{
   color: red;

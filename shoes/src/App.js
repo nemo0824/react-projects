@@ -1,6 +1,6 @@
 import logo from './logo.svg';
-import './App.css';
 import { Button, Navbar,Nav, Container } from 'react-bootstrap';
+import './App.css';
 import data from './data';
 import { useState } from 'react';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="App">
      
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg='dark' data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="#home">FE 임재원  BE 황수환</Navbar.Brand>
           <Nav className="me-auto">
@@ -52,11 +52,11 @@ function App() {
 
       <Routes>
       <Route path='/' element={
-          <>
+        <>
             <div className='main-bg'></div>
             <div className="container">
               <br></br>
-              <div className='alert alert-warning'>인기상품</div>
+              <div className='alert alert-warning 'id= "popproduct">인기상품</div>
               <div className="row">
                 {
                   shoes.map((a, i) => {
@@ -68,7 +68,7 @@ function App() {
               </div>
             </div>
 
-            <button onClick={()=>{
+            <button className='btn btn-danger' onClick={()=>{
               let copy = [...data]
              
               // setShoes(copy)
@@ -87,7 +87,7 @@ function App() {
 
               
             }}>상품 더보기 </button>
-          </>
+        </>
       }>
         {/* 1. App.js에서 Route있던게 인식됨 그래서 Shop.js에 있는 Route안됨
             2. 그렇다면 App.js로 옮겨야하는데 부모자식간에만 props가 되기때문에 안됨
