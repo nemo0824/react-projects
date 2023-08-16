@@ -29,7 +29,7 @@ function Shop(props) {
         
       <div className='shop_bg'></div>
       <div className="content">
-
+    
         
           <div className='left_content'>
             <div className='sidebar'>

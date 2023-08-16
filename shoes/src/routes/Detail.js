@@ -35,7 +35,7 @@ function Detail(props){
                 <Nav.Item>
                     <Nav.Link eventKey="link0" onClick={()=>{
                         setTab(0)
-                    }}>버튼0</Nav.Link>
+                    }}>상세상품</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="link1" onClick={()=>{

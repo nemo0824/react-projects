@@ -112,6 +112,11 @@
 .alertMessage{
   color: red;
 }
+.sizestock{
+  display: flex;
+  justify-content: space-between;
+}
+
 
 
 

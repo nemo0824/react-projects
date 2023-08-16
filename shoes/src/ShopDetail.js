@@ -7,12 +7,16 @@ function ShopDetail(props){
     let {itemNo} = useParams();
     let [tab, setTab] = useState(0)
     const[selectedItem, setSelectedItem] = useState(); 
+    let [itemSize, setitemSize] = useState();
+    let [userCount, setuserCount] = useState(0);
+    let [dataCount, setdataCount] = useState();
+
     useEffect(()=>{
         axios.get(`/shop/${itemNo}`).then(response =>{
-            setSelectedItem(response.data);
+            setSelectedItem(response.data.item);
+            setitemSize(response.data.size);
             console.log(response.data)
-            console.log(selectedItem)
-
+            console.log(itemSize[0].stock)
           })
           .catch(error => console.log(error));
     }, [])
@@ -23,12 +27,40 @@ function ShopDetail(props){
             <div className="row">
                 <div className="col-md-6">
                 
-                <img src={selectedItem?.imgLocation}width="100%" height="60%"/>
+                <img src={selectedItem?.imgLocation}width="100%" height="80%"/>
                 </div>
                 <div className="col-md-6">
                     <h4 className="pt-5">{selectedItem?.name}</h4>
                     <p>{selectedItem?.itemCode}</p>
                     <p>{selectedItem?.price}원</p>
+                    <select style={{width:"100%" , height:"5%"}}>
+                        {itemSize && itemSize.map((a, i)=>(
+                            <option><span className="size">사이즈 {itemSize[i].size}</span>  <span className="stock">재고  {itemSize[i].stock}</span></option>
+                        ))}
+
+                    </select>
+                    {/*해야할것  수량 비교해서  맞게하고 
+                               클릭시 뭐나오고 
+                               하드코딩해서 레이아웃 짜기 */}
+                   
+                    
+                        {/* 그러면 이제 stock를 뺴서 --> itemsize[i].stock랑 userCount 랑 비교 */}
+                        
+                    
+                    <div>{userCount}<button
+                    onClick={()=>{
+                        setuserCount(userCount+1)
+                    }}>+</button><button onClick={()=>{
+                        setuserCount(userCount-1) 
+                        if(userCount<0){
+                            alert('1개 이상 선택해주세요')
+                            setuserCount(0)
+                        }
+                    }}>-</button></div>
+                    
+                    
+
+
                     <button className="btn btn-danger">주문하기</button>
                 </div>
             </div>
@@ -37,7 +69,7 @@ function ShopDetail(props){
                 <Nav.Item>
                     <Nav.Link eventKey="link0" onClick={()=>{
                         setTab(0)
-                    }}>버튼0</Nav.Link>
+                    }}>상세상품</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="link1" onClick={()=>{
