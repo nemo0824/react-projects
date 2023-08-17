@@ -16,7 +16,7 @@ function ShopDetail(props){
             setSelectedItem(response.data.item);
             setitemSize(response.data.size);
             console.log(response.data)
-            console.log(itemSize[0].stock)
+           
           })
           .catch(error => console.log(error));
     }, [])
@@ -33,16 +33,23 @@ function ShopDetail(props){
                     <h4 className="pt-5">{selectedItem?.name}</h4>
                     <p>{selectedItem?.itemCode}</p>
                     <p>{selectedItem?.price}원</p>
-                    <select style={{width:"100%" , height:"5%"}}>
+                    <select style={{width:"100%" , height:"5%"}}
+                        onChange={(e) => {
+                            const selectedIndex = e.target.selectedIndex;
+                            if(selectedIndex>=0){
+                                setdataCount(itemSize[selectedIndex].stock)
+                            }
+                        }}
+                    >
                         {itemSize && itemSize.map((a, i)=>(
-                            <option><span className="size">사이즈 {itemSize[i].size}</span>  <span className="stock">재고  {itemSize[i].stock}</span></option>
+                            <option key={i}><span className="size">사이즈 {itemSize[i].size}</span>  <span className="stock">재고  {(itemSize[i].stock)}</span></option>
                         ))}
-
+                        
                     </select>
                     {/*해야할것  수량 비교해서  맞게하고 
-                               클릭시 뭐나오고 
+                               클릭시 뭐나오고    
                                하드코딩해서 레이아웃 짜기 */}
-                   
+
                     
                         {/* 그러면 이제 stock를 뺴서 --> itemsize[i].stock랑 userCount 랑 비교 */}
                         
@@ -50,6 +57,10 @@ function ShopDetail(props){
                     <div>{userCount}<button
                     onClick={()=>{
                         setuserCount(userCount+1)
+                        if(userCount>dataCount){
+                            alert('재고를 초과하였습니다')
+                            setuserCount(dataCount)
+                        }
                     }}>+</button><button onClick={()=>{
                         setuserCount(userCount-1) 
                         if(userCount<0){
