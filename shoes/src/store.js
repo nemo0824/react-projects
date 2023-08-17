@@ -55,10 +55,13 @@ reducers : {
 
 export let {changeAge, changeName} = user.actions
 export let {plusCount, minusCount} = cart.actions
+
+
 export default configureStore({
   reducer: { 
     user : user.reducer,
-    cart : cart.reducer
+    cart : cart.reducer,
+   
 
   }
 }) 

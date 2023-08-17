@@ -41,10 +41,25 @@ function App() {
           
       
           </Nav>
-          <Nav>
+          
+          {window.sessionStorage.getItem('userId') == null ?
+            <Nav>
+          
           <Nav.Link  className="enroll"onClick={()=> navigate('/enroll')}>회원가입</Nav.Link>
           <Nav.Link  className="login" onClick={()=> navigate('/login')}>로그인</Nav.Link>
+        
           </Nav>
+           : 
+           <Nav>
+          
+           <Nav.Link  className="enroll">{window.sessionStorage.getItem('userId')}님 </Nav.Link>
+           <Nav.Link  className="login" onClick={()=>{
+            window.sessionStorage.clear()
+            navigate('/')
+           }}>로그아웃</Nav.Link>
+         
+           </Nav>
+        }
         </Container>
       </Navbar>
 
@@ -87,6 +102,7 @@ function App() {
 
               
             }}>상품 더보기 </button>
+            
         </>
       }>
         {/* 1. App.js에서 Route있던게 인식됨 그래서 Shop.js에 있는 Route안됨
@@ -142,6 +158,7 @@ function About(){
     </div>
   )
 }
+
 
 
 

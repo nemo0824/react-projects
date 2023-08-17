@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 function Login() {
   
@@ -9,14 +10,26 @@ function Login() {
     userId: "",
     userPassword : "",
   });
+  const navigate = useNavigate();
   
+
+
 
   const handleLoginFormSubmit = (e) => {
     e.preventDefault(); 
     axios.post('/member/login', loginInfo)
       .then(response => {
-        console.log("로그인 성공");
-        //여기서 뭘  반환해야하는지 
+        console.log(response)
+        if(response.data == null){
+          alert('로그인 실패')
+        }else{
+          alert('로그인 성공')
+          Object.keys(response.data).forEach(function(key){
+            window.sessionStorage.setItem(key, response.data[key]);
+          })
+          navigate('/')
+        }
+        
       })
       .catch(error => {
         console.error("로그인 실패", error);
