@@ -26,6 +26,7 @@ function Login() {
           alert('로그인 성공')
           Object.keys(response.data).forEach(function(key){
             window.sessionStorage.setItem(key, response.data[key]);
+            console.log(window.sessionStorage.setItem)
           })
           navigate('/')
         }

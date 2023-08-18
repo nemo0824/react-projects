@@ -27,19 +27,7 @@ function MainFooter(){
         <div id="back-Hwang">
           <section>
           </section>
-          <footer>
-            <nav>
-                <a href='https://cocoder.tistory.com' target='_blank'>Blog</a> |
-                <a href='https://github.com/cocoder16' target='_blank'>Github</a>
-            </nav>
-            <p>
-                <span>Back-End</span><br/>
-                <span>저자 : cocoder</span><br/>
-                <span>이메일 : cocoder16@gmail.com</span><br/>
-                <span>Phone : 010-4146-5622</span><br/>
-                <span>Copyright 2020. cocoder. All Rights Reserved.</span>
-            </p>
-        </footer>
+      
         </div>
       </div>
   

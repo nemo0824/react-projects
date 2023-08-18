@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import Footer from './MainFooter';
 import MainFooter from "./MainFooter";
 
 function ShopDetail(props) {
@@ -12,6 +11,9 @@ function ShopDetail(props) {
     let [itemSize, setitemSize] = useState();
     let [userCount, setuserCount] = useState(0);
     let [dataCount, setdataCount] = useState();
+
+    let [selectedOption, setSelectedOption] = useState(null);
+    let [detialdiv, setDetialDiv] = useState(false); //상품 골랐을시 밑에 나오는 div 
 
     useEffect(() => {
         axios.get(`/shop/${itemNo}`).then(response => {
@@ -41,6 +43,14 @@ function ShopDetail(props) {
                             const selectedIndex = e.target.selectedIndex;
                             if (selectedIndex >= 0) {
                                 setdataCount(itemSize[selectedIndex].stock)
+                                setDetialDiv(true)
+
+                                let selectedOptiondata = itemSize[selectedIndex];
+                                setSelectedOption(selectedOptiondata)
+                                 
+                            }else{
+                                setDetialDiv(false)
+                                setSelectedOption(null);
                             }
                         }}
                     >
@@ -57,25 +67,33 @@ function ShopDetail(props) {
                     {/* 그러면 이제 stock를 뺴서 --> itemsize[i].stock랑 userCount 랑 비교 */}
 
 
-                    <div>{userCount}<button
+                    <div><button onClick={() => {
+                            setuserCount(userCount - 1)
+                            if (userCount < 0) {
+                                alert('1개 이상 선택해주세요')
+                                setuserCount(0)
+                            }
+                        }}>-</button>     {userCount}     <button
                         onClick={() => {
                             setuserCount(userCount + 1)
                             if (userCount > dataCount) {
                                 alert('재고를 초과하였습니다')
                                 setuserCount(dataCount)
                             }
-                        }}>+</button><button onClick={() => {
-                            setuserCount(userCount - 1)
-                            if (userCount < 0) {
-                                alert('1개 이상 선택해주세요')
-                                setuserCount(0)
-                            }
-                        }}>-</button></div>
+                        }}>+</button></div>
+                        {detialdiv && selectedOption && (
+                        <Detialdiv 
+                        userCount = {userCount}
+                        selectedOption={selectedOption} 
+                        selectedItemPrice={selectedItem?.price}/>)} 
 
 
 
-
-                    <button className="btn btn-danger">주문하기</button>
+                            {/* 상품번호, userId, 갯수,  */}
+                    <div className="detail-btn-box">
+                    <button className="btn btn-warning" id="cart-btn">장바구니</button>
+                    <button className="btn btn-danger" id="order-btn">주문하기</button> 
+                    </div>
                 </div>
             </div>
 
@@ -137,7 +155,7 @@ function TabComponent(props) {
                 <p>나이키 후프 엘리트 백팩(32L)</p>
                 <p>남자 모델 키, 착용 사이즈 : 185cm, L</p>
 
-                <p>*일부 제품은 스타일링을 위해 연출되어 실물과 다를 수 있고, 판매되지 않을 수 있습니다. </p>
+                <p>*일부 제품은 스타일링을 위해 연출되어 실물과 다를 수 있고, 판매되지 않을 수 있습니다.</p>
 
                 <p>*스타일링에 포함된 제품 중 일부는 새 학기 컬렉션 할인 혜택에 포함되지 않을 수 있습니다.</p>
             </h5>
@@ -152,6 +170,22 @@ function TabComponent(props) {
 
 }
 
+function Detialdiv(props) {
+    const selectedItemPrice = props.selectedItemPrice;
 
+    return (
+        <div>
+            <p>선택한 사이즈: {props.selectedOption.size}</p>
+            <p>선택한 재고: {props.selectedOption.stock}</p>
+            <p>상품 가격: {selectedItemPrice} 원</p>
+            <p>유저가 선택한 재고: {props.userCount} 원</p>
+            <p>총 금액 : {props.userCount * selectedItemPrice}</p>
+                        
+            {/* 기타 정보를 활용할 수 있도록 추가 */}
+        </div>
+    );
+}
+
+   
 
 export default ShopDetail;

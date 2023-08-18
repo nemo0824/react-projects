@@ -128,7 +128,17 @@
 }
 #front-LIM{
   width: 50%;
-  
+}
+.detail-btn-box{
+  display: flex;
+  justify-content: space-around;
+}
+#cart-btn{
+  width: 40%;
+ 
+}
+#order-btn{
+  width: 40%;
 }
 
 
