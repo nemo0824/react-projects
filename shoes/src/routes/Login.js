@@ -3,6 +3,8 @@ import { Container } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from "react-redux";
+import { setLoginUser } from '../store';
 
 function Login() {
   
@@ -11,6 +13,10 @@ function Login() {
     userPassword : "",
   });
   const navigate = useNavigate();
+
+  let state = useSelector((state)=>{return state})
+  console.log(state.userCart)
+  let dispatch = useDispatch()
   
 
 
@@ -28,6 +34,7 @@ function Login() {
             window.sessionStorage.setItem(key, response.data[key]);
             console.log(window.sessionStorage.setItem)
           })
+          dispatch(setLoginUser(response.data));
           navigate('/')
         }
         

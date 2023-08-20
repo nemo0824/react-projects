@@ -141,7 +141,16 @@
   width: 40%;
 }
 
-
+.exchange-title{
+  border-bottom: #282c34;
+}
+#returnTable{
+  border: 1px solid black;
+  width: 100%;
+}
+#returnTable>tr, td{
+  border: 1px solid black;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

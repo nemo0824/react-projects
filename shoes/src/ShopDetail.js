@@ -3,6 +3,9 @@ import { Nav } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import MainFooter from "./MainFooter";
+import { useDispatch, useSelector } from "react-redux";
+import { addtoCart } from "./store";
+import { setLoginUser } from "./store";
 
 function ShopDetail(props) {
     let { itemNo } = useParams();
@@ -14,6 +17,11 @@ function ShopDetail(props) {
 
     let [selectedOption, setSelectedOption] = useState(null);
     let [detialdiv, setDetialDiv] = useState(false); //상품 골랐을시 밑에 나오는 div 
+
+
+    let state = useSelector((state)=>{return state})
+    console.log(state.userCart)
+    let dispatch = useDispatch()
 
     useEffect(() => {
         axios.get(`/shop/${itemNo}`).then(response => {
@@ -91,7 +99,14 @@ function ShopDetail(props) {
 
                             {/* 상품번호, userId, 갯수,  */}
                     <div className="detail-btn-box">
-                    <button className="btn btn-warning" id="cart-btn">장바구니</button>
+                    <button className="btn btn-warning" id="cart-btn" onClick={()=>{
+                        const userInfo = { loginUser: state.user.Id, ShopItems: selectedOption };
+                        dispatch(setLoginUser(userInfo.loginUser)); // user 슬라이스에 loginUser 정보 설정
+                        dispatch(addtoCart(userInfo)); // userCart 슬라이스에 장바구니 추가
+                        console.log(state.userCart);
+                        console.log(state.user)
+                         
+                    }}>장바구니</button>
                     <button className="btn btn-danger" id="order-btn">주문하기</button> 
                     </div>
                 </div>
@@ -162,7 +177,13 @@ function TabComponent(props) {
                  </>
     }
     if (props.tab == 1) {
-        return <div>1번</div>
+        return <>
+                <div className="exchange-title">
+                <h2>반품/교환정보</h2>
+                </div>
+                <ExcahngeReturn></ExcahngeReturn>
+                   
+                </>
     }
     if (props.tab == 2) {
         return <div>2번</div>
@@ -186,6 +207,55 @@ function Detialdiv(props) {
     );
 }
 
-   
+function ExcahngeReturn() {
+    return (
+        <>
+        <table id="returnTable">
+            <tr>
+            <th>신발 반품 정보 안내</th>
+            </tr>
+            <tr>
+                <td>판매지정사 택배</td>
+                <td>우체국 택배</td>
+            </tr>
+            <tr>
+                <td>반품배송비</td>
+                <td>편도 5000원 </td>
+                <td>교환배송비</td>
+                <td>편도 5500원</td>
+            </tr>
+            <tr>
+                <td>보내실곳</td>
+                <td>과천시 별양로</td>
+            </tr>
+            <tr>
+                <td rowSpan={2}>반품/교환 사유에 따른 요청 가능기간</td>
+                <td>구매자 단순 변심은 상품 수령 후 7일 이내(구매자 반품배송비 부담) </td>
+                
+            </tr>
+            <tr>
+                <td>표시/광고와 상이 계약내용과 다르게 이행된 경우 상품 수령후 3개월 이내 혹은 표시/광고와 다른 사실안 날부터 30일이내 </td>
+            </tr>
+            <tr rowSpan={4}>
+                <td rowSpan={4}>반품/교환 불가능 사유</td>
+                <td> 1번 ~~</td>
+            </tr>
+            <tr> 
+                <td>2번</td>
+                
+            </tr>
+            <tr> 
+                <td>3번</td>
+               
+            </tr>
+            <tr> 
+                <td>4번</td>
+            </tr>
+
+        </table>
+        </>
+    );
+  }
+  
 
 export default ShopDetail;

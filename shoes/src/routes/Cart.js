@@ -14,7 +14,7 @@ function Cart(){
     return(
 
         <div>
-            <h6>{state.user.name}의 장바구니 나이는 {state.user.age}</h6>
+            <h6>{state.user}의 장바구니</h6>
             <button onClick={()=>{
                     dispatch(changeAge(), changeName())
             }}> 버튼</button>
