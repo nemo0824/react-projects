@@ -5,7 +5,7 @@ import axios from 'axios';
 import MainFooter from "./MainFooter";
 import { useDispatch, useSelector } from "react-redux";
 import { addtoCart } from "./store";
-import { setLoginUser } from "./store";
+
 
 function ShopDetail(props) {
     let { itemNo } = useParams();
@@ -100,12 +100,21 @@ function ShopDetail(props) {
                             {/* 상품번호, userId, 갯수,  */}
                     <div className="detail-btn-box">
                     <button className="btn btn-warning" id="cart-btn" onClick={()=>{
-                        const userInfo = { loginUser: state.user.Id, ShopItems: selectedOption };
-                        dispatch(setLoginUser(userInfo.loginUser)); // user 슬라이스에 loginUser 정보 설정
-                        dispatch(addtoCart(userInfo)); // userCart 슬라이스에 장바구니 추가
+                         const userInfo = { loginUser: state.user, ShopItems: selectedOption  }
+                         
                         console.log(state.userCart);
                         console.log(state.user)
-                         
+                        axios.get(`/cartInsert/${itemNo}`,{
+                            params: {
+                            userNo: state.user.userNo,
+                            itemSize : userInfo.ShopItems.size,
+                            itemCount : userInfo.ShopItems.stock
+                            }
+                            } ).then(response => {
+                        })
+                            .catch(error => console.log(error));
+
+
                     }}>장바구니</button>
                     <button className="btn btn-danger" id="order-btn">주문하기</button> 
                     </div>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { changeAge, changeName } from "../store"
 import { plusCount,minusCount } from "../store"
 
+
 function Cart(){
     
     let state = useSelector((state)=>{return state})
@@ -14,10 +15,8 @@ function Cart(){
     return(
 
         <div>
-            <h6>{state.user}의 장바구니</h6>
-            <button onClick={()=>{
-                    dispatch(changeAge(), changeName())
-            }}> 버튼</button>
+            <h6>{state.user.userId}의 장바구니</h6>
+            
             
             <Table>
                 <thead>
@@ -31,7 +30,7 @@ function Cart(){
                 </thead>
                 <tbody>
                     {
-                        state.cart.map((a, i)=>{
+                        state.userCart.map((a, i)=>{
                             return(
                                 <tr key={i}>
                                     <td>{state.cart[i].id}</td>

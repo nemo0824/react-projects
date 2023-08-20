@@ -13,70 +13,60 @@ const user = createSlice({
   },
 });
 
+// 로그인 -> 이거를 원래 session 했는데 생각해보니 session그게아니라 전역변수로 만들어놓는게 맞다고생각했어요
+// 전역변수로 만들려고 store.js에서 user만든거고 
+// 로그인 - > 로그인정보가지고 -> shopdetail -> 상품선택 -> loginUser값과 상품 재고랑 사이즈랑 -> cart
+// cart에서도 그러면 로그인 유저 값과 이값이 필요하다
+// userCart를 만듬 -> loginUser와 데이터 - > 
+// 1번째 loginUser != loginuser
 
-let cart = createSlice({
-  name : 'cart',
-  initialState : 
-  [
-{
-    id: 0,
-    title : "나이키 코르테즈",
-    count : 1,
-    price : 119000
-},
-{
-    id: 1,
-    title : "나이키 에어 포스 1 '07",
-    count : 2,
-    price : 139000
-},
-
-],
-reducers : {
-  
-
-}
-
-
-
-  
-})
 
 let userCart = createSlice({
-  name : 'userCart',
-  initialState : {},
-  reducers:{
-    addtoCart : (state, action) =>{
-      let  {loginUser, ShopItems} = action.payload;
-      if(!state[loginUser]){
-        state[loginUser] ={cart : []};
+  name: 'userCart',
+  initialState: [], 
+  reducers: {
+    addtoCart: (state, action) => {
+      let { loginUser, ShopItems } = action.payload;
+      let existingCart = state.find(() => this.loginUser === loginUser);
+      if (!existingCart) {
+        state.push({ loginUser, cart: [ShopItems] });
+      } else {
+        existingCart.cart.push(ShopItems);
       }
-      state[loginUser].cart.push(ShopItems)
     },
-    plusCount(state, action){
-      let idNumber = state.findIndex((a)=> {
-        return a.id == action.payload }) 
-      state[idNumber].count +=1
+    plusCount: (state, action) => {
+      let { loginUser, itemId } = action.payload;
+      let userCart = state.find((cart) => cart.loginUser === loginUser);
+      if (userCart) {
+        let item = userCart.cart.find((item) => item.id === itemId);
+        if (item) {
+          item.count += 1;
+        }
+      }
     },
-    minusCount(state, action){
-      let idNumber = state.findIndex((a)=>{
-        return a.id == action.payload})
-      state[idNumber].count -=1
-      
-    }
-  }
-})
+    minusCount: (state, action) => {
+      let { loginUser, itemId } = action.payload;
+      let userCart = state.find((cart) => cart.loginUser === loginUser);
+      if (userCart) {
+        let item = userCart.cart.find((item) => item.id === itemId);
+        if (item && item.count > 0) {
+          item.count -= 1;
+        }
+      }
+    },
+  },
+});
 
 export const { setLoginUser, logoutUser } = user.actions;
-export let {addtoCart} = userCart.actions;
-export let {changeAge, changeName} = user.actions
-export let {plusCount, minusCount} = cart.actions
+export let { addtoCart, plusCount, minusCount } = userCart.actions;
+export let { changeAge, changeName } = user.actions;
+
+
 
 
 export default configureStore({
   reducer: { 
     user : user.reducer,
-    cart : cart.reducer,
     userCart : userCart.reducer
    
     
