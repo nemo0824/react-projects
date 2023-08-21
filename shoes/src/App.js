@@ -41,7 +41,14 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link onClick={()=> navigate('/')}>home</Nav.Link>
             <Nav.Link onClick={()=> navigate('/shop')}>Shop</Nav.Link>
-            <Nav.Link onClick={()=> navigate('/cart')}>Cart</Nav.Link>
+            <Nav.Link onClick={() => {
+            if (window.sessionStorage.getItem('userId') === null || state.user === null) {
+             alert('로그인 후 이용해주세요');
+             navigate('/login');
+            } else {
+             navigate('/cart');
+            }
+            }}>Cart</Nav.Link>
           
       
           </Nav>

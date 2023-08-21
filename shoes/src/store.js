@@ -70,19 +70,28 @@ let userCart = createSlice({
 
 let immediateBuy = createSlice({
   name : 'immediateBuy',
-  initialState : {},
+  initialState : null,
   reducers :{
-    setImmediate : (state, action) =>{
-      return action.payload
-      
+    setImmediate(state, action){
+      return action.payload; 
+    } ,
+    ImmediateMinus(state, action){
+      if (state) {
+        state.stock -= 1;
+      }
+    },
+    ImmediatePlus(state, action){
+      if (state) {
+        state.stock += 1;
+      }
     }
-  }
+    
+    }
 })
 
 export const { setLoginUser, logoutUser } = user.actions;
 export let { addtoCart, plusCount, minusCount } = userCart.actions;
-export let { changeAge, changeName } = user.actions;
-export let {setImmediate} = immediateBuy.actions;
+export let {setImmediate, ImmediateMinus, ImmediatePlus} = immediateBuy.actions;
 
 
 

@@ -127,9 +127,14 @@ function ShopDetail(props) {
                     }}>장바구니</button>
                     <button className="btn btn-danger" id="order-btn" onClick={() => {
                         if(state.user != null){
-                            console.log(state.user)
+                            // console.log(state.user)
                             const item ={ShopItems : selectedOption}
-                            setImmediate(state.user.userNo, item.ShopItems.size, item.ShopItems.stock, selectedItem?.price)
+                            dispatch(setImmediate({
+                                userNo: state.user.userNo,
+                                size: item.ShopItems.size,
+                                stock: item.ShopItems.stock,
+                                price: selectedItem?.price}))
+                            console.log(state.user.userNo, item.ShopItems.size, item.ShopItems.stock, selectedItem?.price)
                             navigate('/order'); 
                             console.log(state.immediateBuy)
                         }else{
