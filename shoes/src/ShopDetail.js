@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams, Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import MainFooter from "./MainFooter";
 import { useDispatch, useSelector } from "react-redux";
 import { addtoCart } from "./store";
-
+import {setImmediate} from "./store";
 
 function ShopDetail(props) {
     let { itemNo } = useParams();
@@ -18,6 +18,8 @@ function ShopDetail(props) {
     let [selectedOption, setSelectedOption] = useState(null);
     let [detialdiv, setDetialDiv] = useState(false); //상품 골랐을시 밑에 나오는 div 
 
+    let navigate = useNavigate();
+    
 
     let state = useSelector((state)=>{return state})
     console.log(state.userCart)
@@ -100,23 +102,43 @@ function ShopDetail(props) {
                             {/* 상품번호, userId, 갯수,  */}
                     <div className="detail-btn-box">
                     <button className="btn btn-warning" id="cart-btn" onClick={()=>{
-                         const userInfo = { loginUser: state.user, ShopItems: selectedOption  }
+                        if(state.user != null){
+                            const userInfo = { loginUser: state.user, ShopItems: selectedOption  }
                          
-                        console.log(state.userCart);
-                        console.log(state.user)
-                        axios.get(`/cartInsert/${itemNo}`,{
-                            params: {
-                            userNo: state.user.userNo,
-                            itemSize : userInfo.ShopItems.size,
-                            itemCount : userInfo.ShopItems.stock
-                            }
-                            } ).then(response => {
-                        })
-                            .catch(error => console.log(error));
+                            console.log(state.userCart);
+                            console.log(state.user)
+                            axios.get(`/cart/insert/${itemNo}`,{
+                                params: {
+                                userNo: state.user.userNo,
+                                itemSize : userInfo.ShopItems.size,
+                                itemCount : userInfo.ShopItems.stock
+                                }
+                                } ).then(response => {
+                            })
+                                .catch(error => console.log(error));
+                            
+                        }else{
+                            alert('로그인 해주세요 ')
+                            navigate('/login')
+                        }
+                        
 
 
                     }}>장바구니</button>
-                    <button className="btn btn-danger" id="order-btn">주문하기</button> 
+                    <button className="btn btn-danger" id="order-btn" onClick={() => {
+                        if(state.user != null){
+                            console.log(state.user)
+                            const item ={ShopItems : selectedOption}
+                            setImmediate(state.user.userNo, item.ShopItems.size, item.ShopItems.stock, selectedItem?.price)
+                            navigate('/order'); 
+                            console.log(state.immediateBuy)
+                        }else{
+                            alert('로그인 해주세요 ')
+                            navigate('/login')
+                        }
+                        
+                    
+                    }}>주문하기</button> 
                     </div>
                 </div>
             </div>

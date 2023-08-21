@@ -12,7 +12,9 @@ import Test from './routes/Test';
 import Enroll from './routes/Enroll';
 import Shop  from './routes/Shop';
 import ShopDetail from './ShopDetail';
-
+import Order from './routes/Order';
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from './store';
 
 
 
@@ -26,7 +28,9 @@ function App() {
   )))
   let navigate = useNavigate(); // 페이지 이동을 도와주는 navigate()
   let [count, setCount] = useState(1)
-  
+
+  let state = useSelector((state)=>{return state})
+  let dispatch = useDispatch()
   
   return (
     <div className="App">
@@ -42,7 +46,7 @@ function App() {
       
           </Nav>
           
-          {window.sessionStorage.getItem('userId') == null ?
+          {window.sessionStorage.getItem('userId') == null || state.user == null ?
             <Nav>
           
           <Nav.Link  className="enroll"onClick={()=> navigate('/enroll')}>회원가입</Nav.Link>
@@ -54,7 +58,8 @@ function App() {
           
            <Nav.Link  className="enroll">{window.sessionStorage.getItem('userId')}님 </Nav.Link>
            <Nav.Link  className="login" onClick={()=>{
-            window.sessionStorage.clear()
+            window.sessionStorage.clear() // session날리는거 
+            dispatch(logoutUser(null)); //state 날라니는거
             navigate('/')
            }}>로그아웃</Nav.Link>
          
@@ -124,6 +129,7 @@ function App() {
         <Route path='/enroll' element={<Enroll></Enroll>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/Test' element={<Test></Test>}></Route>
+        <Route path='/order' element={<Order></Order>}></Route>
         <Route path='*' element={<div> 404에러 없는페이지  </div>}></Route>
         
         <Route></Route>
