@@ -28,10 +28,22 @@ function Cart(){
       }, []);
 
       const handleRemoveItem = (index) => {
-        const updatedCart = userCart.filter((item, i) => i !== index);
+      const updatedCart = userCart.filter((item, i) => i !== index);
         setuserCart(updatedCart);
     }
-    const totalPrice = userCart?.reduce((total, item) => total + item.price, 0);
+      const totalPrice = userCart?.reduce((total, item) => total + (item.price * item.count), 0);
+        
+    //   const handlePlusCount = (i)=>{
+    //     const updatedCart = [...userCart];
+    //     updatedCart[i].count += 1;
+    //     setuserCart(updatedCart)
+    //   }
+    //   const handleMinusCount = (i)=>{
+    //     const updatedCart = [...userCart];
+    //     updatedCart[i].count -= 1;
+    //     setuserCart(updatedCart)
+    //   }  
+      
     return(
 
         <div>
@@ -60,13 +72,13 @@ function Cart(){
                                     <td>{userCart[i].name}</td>
                                     <td>{userCart[i].size}</td>
                                     <td>{userCart[i].count} </td>
-                                    <td>{userCart[i].price}</td>
+                                    <td>{userCart[i].price * userCart[i].count}</td>
                                     <td>
                                         <button onClick={()=>{
-                                            dispatch(plusCount(state.cart[i].id))                                          
+                                            setuserCart(userCart[i].count+1)                                          
                                         }}>+</button>
                                          <button onClick={()=>{
-                                            dispatch(minusCount(state.cart[i].id))                                     
+                                            setuserCart(userCart[i].count-1)                                      
                                         }}>-</button>
                                     </td>
                                     <td><button onClick={()=>{
@@ -79,7 +91,7 @@ function Cart(){
                             
                         })
                     }
-                    <div>결제 금액  : {totalPrice}</div>
+                    <div>결제 금액  :{totalPrice} </div>
                 </tbody>
             </Table> 
            
