@@ -13,6 +13,7 @@ function Cart(){
     console.log(state.user.userNo)
     let dispatch = useDispatch()
     let userNo = state.user.userNo
+    let itemSize = state.user.itemSize
     let [userCart, setuserCart] = useState();
     let navigate = useNavigate();
     useEffect(() => {
@@ -30,9 +31,9 @@ function Cart(){
       }, []);
 
       const handleRemoveItem = (index) => {
-      const updatedCart = userCart.filter((item, i) => i !== index);
+        const updatedCart = userCart.filter((item, i) => i !== index);
         setuserCart(updatedCart);
-        dispatch(setCartItems(userCart))
+        dispatch(setCartItems(updatedCart)); // 업데이트된 카트 항목을 Redux 스토어에 반영
     }
       const totalPrice = userCart?.reduce((total, item) => total + (item.price * item.count), 0);
         
