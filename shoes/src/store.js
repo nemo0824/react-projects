@@ -65,6 +65,11 @@ let userCart = createSlice({
         }
       }
     },
+    setCartItems(state, action){
+     return action.payload
+      
+    }
+
   },
 });
 
@@ -90,7 +95,7 @@ let immediateBuy = createSlice({
 })
 
 export const { setLoginUser, logoutUser } = user.actions;
-export let { addtoCart, plusCount, minusCount } = userCart.actions;
+export let { addtoCart, plusCount, minusCount, setCartItems } = userCart.actions;
 export let {setImmediate, ImmediateMinus, ImmediatePlus} = immediateBuy.actions;
 
 
