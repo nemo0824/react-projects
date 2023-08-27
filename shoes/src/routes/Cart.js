@@ -14,7 +14,7 @@ function Cart(){
     let dispatch = useDispatch()
     let userNo = state.user.userNo
     let itemSize = state.user.itemSize
-    let [userCart, setuserCart] = useState();
+    let [userCart, setuserCart] = useState([]);
     let navigate = useNavigate();
     useEffect(() => {
         axios.get('/cart/items',{
@@ -37,17 +37,7 @@ function Cart(){
     }
       const totalPrice = userCart?.reduce((total, item) => total + (item.price * item.count), 0);
         
-    //   const handlePlusCount = (i)=>{
-    //     const updatedCart = [...userCart];
-    //     updatedCart[i].count += 1;
-    //     setuserCart(updatedCart)
-    //   }
-    //   const handleMinusCount = (i)=>{
-    //     const updatedCart = [...userCart];
-    //     updatedCart[i].count -= 1;
-    //     setuserCart(updatedCart)
-    //   }  
-      
+
     return(
 
         <div>
@@ -79,10 +69,22 @@ function Cart(){
                                     <td>{userCart[i].price * userCart[i].count}</td>
                                     <td>
                                         <button onClick={()=>{
-                                            setuserCart(userCart[i].count+1)                                          
+                                            const updatedCart = [...userCart];
+                                            updatedCart[i] = {
+                                                ...updatedCart[i],
+                                                count: (parseInt(updatedCart[i].count) + 1).toString(), 
+                                               
+                                            };
+                                            setuserCart(updatedCart);
                                         }}>+</button>
                                          <button onClick={()=>{
-                                            setuserCart(userCart[i].count-1)                                      
+                                            const updatedCart = [...userCart];
+                                            updatedCart[i] = {
+                                                ...updatedCart[i],
+                                                count: (parseInt(updatedCart[i].count) - 1).toString(), 
+                                               
+                                            };
+                                            setuserCart(updatedCart);                             
                                         }}>-</button>
                                     </td>
                                     <td><button onClick={()=>{
