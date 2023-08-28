@@ -1,7 +1,7 @@
 import { Table } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { changeAge, changeName } from "../store"
-import { plusCount,minusCount, setCartItems } from "../store"
+import { plusCount,minusCount, setCartItems, setTotalPrice } from "../store"
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
@@ -36,7 +36,7 @@ function Cart(){
         dispatch(setCartItems(updatedCart)); // 업데이트된 카트 항목을 Redux 스토어에 반영
     }
       const totalPrice = userCart?.reduce((total, item) => total + (item.price * item.count), 0);
-        
+  
 
     return(
 
@@ -76,6 +76,7 @@ function Cart(){
                                                
                                             };
                                             setuserCart(updatedCart);
+                                            console.log(userCart)
                                         }}>+</button>
                                          <button onClick={()=>{
                                             const updatedCart = [...userCart];
@@ -84,7 +85,8 @@ function Cart(){
                                                 count: (parseInt(updatedCart[i].count) - 1).toString(), 
                                                
                                             };
-                                            setuserCart(updatedCart);                             
+                                            setuserCart(updatedCart); 
+                                                                       
                                         }}>-</button>
                                     </td>
                                     <td><button onClick={()=>{

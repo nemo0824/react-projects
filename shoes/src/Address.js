@@ -28,12 +28,17 @@ const Post = (props) => {
     }
 
     return (
+        <>
+
         <div >
+        
             <DaumPostcode
                 className="postmodal"
                 autoClose
-                onComplete={complete} />
+                onComplete={complete} 
+                />
         </div>
+        </>
     );
 };
 

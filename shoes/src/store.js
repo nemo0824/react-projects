@@ -45,29 +45,32 @@ let userCart = createSlice({
         existingCart.cart.push(ShopItems);
       }
     },
-    plusCount: (state, action) => {
-      let { loginUser, itemId } = action.payload;
-      let userCart = state.find((cart) => cart.loginUser === loginUser);
-      if (userCart) {
-        let item = userCart.cart.find((item) => item.id === itemId);
-        if (item) {
-          item.count += 1;
-        }
-      }
-    },
-    minusCount: (state, action) => {
-      let { loginUser, itemId } = action.payload;
-      let userCart = state.find((cart) => cart.loginUser === loginUser);
-      if (userCart) {
-        let item = userCart.cart.find((item) => item.id === itemId);
-        if (item && item.count > 0) {
-          item.count -= 1;
-        }
-      }
-    },
+    // plusCount: (state, action) => {
+    //   let { loginUser, itemId } = action.payload;
+    //   let userCart = state.find((cart) => cart.loginUser === loginUser);
+    //   if (userCart) {
+    //     let item = userCart.cart.find((item) => item.id === itemId);
+    //     if (item) {
+    //       item.count += 1;
+    //     }
+    //   }
+    // },
+    // minusCount: (state, action) => {
+    //   let { loginUser, itemId } = action.payload;
+    //   let userCart = state.find((cart) => cart.loginUser === loginUser);
+    //   if (userCart) {
+    //     let item = userCart.cart.find((item) => item.id === itemId);
+    //     if (item && item.count > 0) {
+    //       item.count -= 1;
+    //     }
+    //   }
+    // }
     setCartItems(state, action){
      return action.payload
       
+    },
+    setTotalPrice(state, action){
+      return action.payload
     }
 
   },
@@ -95,7 +98,7 @@ let immediateBuy = createSlice({
 })
 
 export const { setLoginUser, logoutUser } = user.actions;
-export let { addtoCart, plusCount, minusCount, setCartItems } = userCart.actions;
+export let { setTotalPrice, setCartItems } = userCart.actions;
 export let {setImmediate, ImmediateMinus, ImmediatePlus} = immediateBuy.actions;
 
 
