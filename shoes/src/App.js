@@ -16,8 +16,9 @@ import Order from './routes/Order';
 import Pay from './routes/Pay';
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from './store';
-
-
+import { CheckoutPage } from './pages/Checkout';
+import { FailPage } from './pages/Fail';
+import { SuccessPage } from './pages/Success';
 
 
 
@@ -140,6 +141,10 @@ function App() {
         <Route path='/Test' element={<Test></Test>}></Route>
         <Route path='/order' element={<Order></Order>}></Route>
         <Route path='/pay' element={<Pay></Pay>}></Route>
+        <Route path='/check' element={<CheckoutPage></CheckoutPage>}></Route>
+        <Route path='/success' element={<SuccessPage></SuccessPage>}></Route>
+        <Route path='/fail' element={<FailPage></FailPage>}></Route>
+    
         <Route path='*' element={<div> 404에러 없는페이지  </div>}></Route>
         
         <Route></Route>

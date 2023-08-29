@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Table } from "react-bootstrap"
 import Post from '../Address.js'
 import { useState } from 'react'
-
+import { CheckoutPage } from '../pages/Checkout.jsx';
 
 function Pay(){
     let state = useSelector((state)=>{return state})
@@ -33,7 +33,7 @@ function Pay(){
     const handleComplete = (data) => {
         setPopup(!popup);
     }
-        
+
     return(
        
         <>
@@ -85,7 +85,7 @@ function Pay(){
              {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
              </div>
         </div>
-
+        <CheckoutPage totalPrice={totalPrice}></CheckoutPage>
         </div>
         </>
     )
