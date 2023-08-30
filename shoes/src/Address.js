@@ -28,7 +28,7 @@ const Post = (props) => {
         props.handleCloseModal(); 
     }
     const handleClose = () => {
-        // 부모로부터 전달된 함수를 호출하여 모달을 닫습니다
+        
         props.handleCloseModal();
     };
 

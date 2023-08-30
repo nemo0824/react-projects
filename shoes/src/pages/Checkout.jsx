@@ -62,7 +62,7 @@ export function CheckoutPage(props) {
               failUrl: `${window.location.origin}/fail`
             });
           } catch (error) {
-            // handle error
+            
           }
         }}
       >
