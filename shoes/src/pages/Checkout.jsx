@@ -40,8 +40,8 @@ export function CheckoutPage(props) {
   }, [price]);
 
   return (
-    <div>
-      <h1>주문서</h1>
+    <div className="payorder">
+      <h2>주문서</h2>
       <p>가격 : {`${props.totalPrice.toLocaleString()}원`}</p>
       <p>주소 :{`${props.fullAddress.toLocaleString()}`}</p>
       <div>

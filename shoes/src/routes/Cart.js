@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
 import MainFooter from "../MainFooter";
 import { Table } from "react-bootstrap"
-
+import userCart from "../store"
+ 
 
 function Cart(){
     
@@ -38,7 +39,8 @@ function Cart(){
         dispatch(setCartItems(updatedCart)); // 업데이트된 카트 항목을 Redux 스토어에 반영
     }
       const totalPrice = userCart?.reduce((total, item) => total + (item.price * item.count), 0);
-  
+   
+
 
     return(
 
@@ -49,7 +51,7 @@ function Cart(){
             <Table>
                 <thead>
                     <tr>
-                        <th className="sgcolor">번호</th>
+                        <th>번호</th>
                         <th>이미지</th>
                         <th>상품명</th>
                         <th>사이즈</th>
@@ -81,6 +83,7 @@ function Cart(){
                                             };
                                             setuserCart(updatedCart);
                                             console.log(userCart)
+                                           
                                         }}>+</button>
                                          <button onClick={()=>{
                                             const updatedCart = [...userCart];

@@ -5,6 +5,7 @@ import Post from '../Address.js'
 import { useState } from 'react'
 import { CheckoutPage } from '../pages/Checkout.jsx';
 import MainFooter from '../MainFooter.js'
+import { UNSAFE_DataRouterStateContext } from 'react-router'
 function Pay(){
     let state = useSelector((state)=>{return state})
     console.log(state.userCart)
@@ -13,7 +14,7 @@ function Pay(){
         return total + item.price * item.count;
     }, 0);
 
-
+    let [sale, setSale] = useState(0);
 
 
     const [enroll_company, setEnroll_company] = useState({
@@ -54,12 +55,12 @@ function Pay(){
     return(
        
         <>
-        <h3>결제페이지 </h3>
+        <h2>결제페이지 </h2>
         <div>
-        <Table>
+        <Table className='paymentTable'>
                 <thead>
                     <tr>
-                        <th>번호</th>
+                        <th >번호</th>
                         <th>이미지</th>
                         <th>상품명</th>
                         <th>사이즈</th>
@@ -92,19 +93,47 @@ function Pay(){
                 </tbody>
                 
             </Table> 
-            <div className='totalPrice'>결제 금액  : {totalPrice}</div>
+            <div className='totalPrice'>
+                <table className='paymentTable'>
+                    <tr>
+                        <td className='payment'>주문금액</td>
+                        <td className='payment-number'>{totalPrice}</td>
+                        <td className='payment'>할인금액</td>
+                        <td className='payment-number'>{sale}</td>
+                        <td className='payment'>결제 금액</td>
+                        <td className='payment-number'>{totalPrice-sale}</td>
+                    </tr>
+                </table>
+            </div>
         <div>{console.log(state.userCart)}</div>
        <div id="address_content">
+        <h4>주소 입력</h4>
         <div className="address_search" >
-            <h4>주소 입력</h4>
-             <input className="user_enroll_text" placeholder="주소"  type="text" required={true} name="address" onChange={handleInput} value={enroll_company.address}/>
-             <input className= "extra_address" placeholder="상세주소" name="extra" onChange={extrahandleInput} value={enroll_company.extra} ></input>
-             <button onClick={handleComplete}>우편번호 찾기</button>
+        <table className='paymentTable'>
+                    <tr>
+                        <td className='payment'>
+                        배송지 
+                        </td>
+                        <td className='payment-number'>
+                        
+                        <input className="user_enroll_text" placeholder="주소"  type="text" required={true} name="address" onChange={handleInput} value={enroll_company.address}/>
+                        <input className= "user_enroll_text" placeholder="상세주소" name="extra" onChange={extrahandleInput} value={enroll_company.extra} ></input>
+                        <button onClick={handleComplete} >우편번호 찾기</button>
+            
+                        
+
+                        </td>
+                        
+                    </tr>
+                </table>
+             
+            
+            
+             
+           
              {popup && <Post company={enroll_company} setcompany={setEnroll_company} handleCloseModal={handleCloseModal}></Post>}
-             <button onClick={()=>{
-                console.log(enroll_company)
-                console.log(fullAddress)
-             }}>데이터 확인</button>
+             
+             
              </div>
         </div>
         <CheckoutPage totalPrice={totalPrice} fullAddress={fullAddress}></CheckoutPage>

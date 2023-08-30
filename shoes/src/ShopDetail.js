@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addtoCart } from "./store";
 import {setImmediate} from "./store";
 
+
 function ShopDetail(props) {
     let { itemNo } = useParams();
     let [tab, setTab] = useState(0)
@@ -30,6 +31,8 @@ function ShopDetail(props) {
             setSelectedItem(response.data.item);
             setitemSize(response.data.size);
             console.log(response.data)
+
+            
 
         })
             .catch(error => console.log(error));
@@ -65,7 +68,8 @@ function ShopDetail(props) {
                         }}
                     >
                         {itemSize && itemSize.map((a, i) => (
-                            <option key={i}><span className="size">사이즈 {itemSize[i].size}</span>  <span className="stock">재고  {(itemSize[i].stock)}</span></option>
+                            <option key={i}><span className="size">사이즈 {itemSize[i].size}</span> 
+                             <span className="stock">재고  {(itemSize[i].stock)}</span></option>
                         ))}
 
                     </select>
@@ -77,14 +81,15 @@ function ShopDetail(props) {
                     {/* 그러면 이제 stock를 뺴서 --> itemsize[i].stock랑 userCount 랑 비교 */}
 
 
-                    <div><button onClick={() => {
+                    <div>
+                        <button onClick={() => {
                             setuserCount(userCount - 1)
                             if (userCount < 0) {
                                 alert('1개 이상 선택해주세요')
                                 setuserCount(0)
                             }
-                        }}>-</button>     {userCount}     <button
-                        onClick={() => {
+                        }}>-</button>     {userCount}    
+                         <button onClick={() => {
                             setuserCount(userCount + 1)
                             if (userCount > dataCount) {
                                 alert('재고를 초과하였습니다')
@@ -143,7 +148,7 @@ function ShopDetail(props) {
                         }
                         
                     
-                    }}>주문하기</button> 
+                    }}>즉시구매</button> 
                     </div>
                 </div>
             </div>
@@ -233,9 +238,9 @@ function Detialdiv(props) {
     return (
         <div>
             <p>선택한 사이즈: {props.selectedOption.size}</p>
-            <p>선택한 재고: {props.selectedOption.stock}</p>
+            <p>보유한 재고: {props.selectedOption.stock}</p>
             <p>상품 가격: {selectedItemPrice} 원</p>
-            <p>유저가 선택한 재고: {props.userCount} 원</p>
+            <p>유저가 선택한 재고: {props.userCount} 개</p>
             <p>총 금액 : {props.userCount * selectedItemPrice}</p>
                         
             {/* 기타 정보를 활용할 수 있도록 추가 */}

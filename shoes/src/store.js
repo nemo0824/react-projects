@@ -45,26 +45,7 @@ let userCart = createSlice({
         existingCart.cart.push(ShopItems);
       }
     },
-    // plusCount: (state, action) => {
-    //   let { loginUser, itemId } = action.payload;
-    //   let userCart = state.find((cart) => cart.loginUser === loginUser);
-    //   if (userCart) {
-    //     let item = userCart.cart.find((item) => item.id === itemId);
-    //     if (item) {
-    //       item.count += 1;
-    //     }
-    //   }
-    // },
-    // minusCount: (state, action) => {
-    //   let { loginUser, itemId } = action.payload;
-    //   let userCart = state.find((cart) => cart.loginUser === loginUser);
-    //   if (userCart) {
-    //     let item = userCart.cart.find((item) => item.id === itemId);
-    //     if (item && item.count > 0) {
-    //       item.count -= 1;
-    //     }
-    //   }
-    // }
+    
     setCartItems(state, action){
      return action.payload
       
@@ -78,7 +59,7 @@ let userCart = createSlice({
 
 let immediateBuy = createSlice({
   name : 'immediateBuy',
-  initialState : null,
+  initialState : [],
   reducers :{
     setImmediate(state, action){
       return action.payload; 
@@ -97,6 +78,12 @@ let immediateBuy = createSlice({
     }
 })
 
+  
+
+
+
+
+
 export const { setLoginUser, logoutUser } = user.actions;
 export let { setTotalPrice, setCartItems } = userCart.actions;
 export let {setImmediate, ImmediateMinus, ImmediatePlus} = immediateBuy.actions;
@@ -107,8 +94,9 @@ export default configureStore({
   reducer: { 
     user : user.reducer,
     userCart : userCart.reducer,
-    immediateBuy : immediateBuy.reducer
-   
+    immediateBuy : immediateBuy.reducer,
+    
+    
     
   }
 }) 
