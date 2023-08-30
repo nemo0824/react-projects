@@ -2,7 +2,7 @@ import React from 'react';
 
 function MainFooter(){
     return(
-
+     
       <div id='footer'>
         <div id="front-LIM">
           <section>
@@ -30,7 +30,7 @@ function MainFooter(){
       
         </div>
       </div>
-  
+     
   )
   }
   

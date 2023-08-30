@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginUser } from '../store';
-
+import { Link } from 'react-router-dom';
 function Login() {
   
   const [loginInfo, setLoginInfo] = useState({
@@ -58,9 +58,8 @@ function Login() {
         <input type='password' placeholder='비밀번호 ' className='input' onChange= {e=> setLoginInfo({...loginInfo, userPassword: e.target.value})}></input>
         <input type="submit" value="로그인" className='btn-submit' ></input>
         <div className='login_atage'>
-         <a>회원가입 </a>
-         <a>비밀번호찾기</a>
-         <a>아이디찾기</a>
+        <Link to="/enroll">회원가입</Link>
+         
         </div>
       </form>
     </div>

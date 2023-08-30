@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-
+import MainFooter from "../MainFooter";
 export function SuccessPage() {
   const [searchParams] = useSearchParams();
 
@@ -10,6 +10,8 @@ export function SuccessPage() {
       <div>{`결제 금액: ${Number(
         searchParams.get("amount")
       ).toLocaleString()}원`}</div>
+      <MainFooter></MainFooter>
     </div>
+
   );
 }

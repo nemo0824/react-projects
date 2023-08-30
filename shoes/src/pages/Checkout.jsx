@@ -9,7 +9,8 @@ const customerKey = "test_sk_6BYq7GWPVv5vgq42egl3NE5vbo1d";
 export function CheckoutPage(props) {
   const paymentWidgetRef = useRef(null);
   const paymentMethodsWidgetRef = useRef(null);
-  const [price, setPrice] = useState(50_000);
+  const [price, setPrice] = useState(props.totalPrice);
+
 
   useEffect(() => {
     (async () => {
@@ -34,14 +35,15 @@ export function CheckoutPage(props) {
 
     paymentMethodsWidget.updateAmount(
       price,
-      paymentMethodsWidget.UPDATE_REASON.COUPON
+      
     );
   }, [price]);
 
   return (
     <div>
       <h1>주문서</h1>
-      <span>{`${props.totalPrice.toLocaleString()}원`}</span>
+      <p>가격 : {`${props.totalPrice.toLocaleString()}원`}</p>
+      <p>주소 :{`${props.fullAddress.toLocaleString()}`}</p>
       <div>
        
       </div>

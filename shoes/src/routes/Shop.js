@@ -4,7 +4,7 @@ import ShopCard from '../ShopCard';
 import ShopBrand from '../ShopBrand';
 import ShopDetail from '../ShopDetail'
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
-
+import MainFooter from '../MainFooter';
 
 function Shop(props) {
   const [items, setItems] = useState([]);
@@ -57,7 +57,7 @@ function Shop(props) {
         </div>
        
       </div>
-      
+      <MainFooter></MainFooter>
     </>
     
   );

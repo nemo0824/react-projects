@@ -1,10 +1,12 @@
-import { Table } from "react-bootstrap"
+
 import { useDispatch, useSelector } from "react-redux"
 import { changeAge, changeName } from "../store"
 import { plusCount,minusCount, setCartItems, setTotalPrice } from "../store"
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
+import MainFooter from "../MainFooter";
+import { Table } from "react-bootstrap"
 
 
 function Cart(){
@@ -41,13 +43,14 @@ function Cart(){
     return(
 
         <div>
-            <h6>{state.user.userId}의 장바구니</h6>
+            <h3>{state.user.userId}의 장바구니</h3>
             
             
             <Table>
                 <thead>
                     <tr>
-                        <th>번호</th>
+                        <th className="sgcolor">번호</th>
+                        <th>이미지</th>
                         <th>상품명</th>
                         <th>사이즈</th>
                         <th>수량</th>
@@ -63,6 +66,7 @@ function Cart(){
                                 <>
                                 <tr key={i}>
                                     <td>{[i+1]}</td>
+                                    <td><img src={userCart[i].imgLocation} width="100px" height="10%"></img></td>
                                     <td>{userCart[i].name}</td>
                                     <td>{userCart[i].size}</td>
                                     <td>{userCart[i].count} </td>
@@ -99,13 +103,15 @@ function Cart(){
                             
                         })
                     }
-                    <div>결제 금액  :{totalPrice} </div>
+                    <div >결제 금액  :{totalPrice} </div>
                 </tbody>
             </Table> 
+            
            {/* 유저번호, 상품번호, 사이즈 ,  */}
            <button onClick={()=>{
             navigate('/pay')
            }}>결제하기</button>
+           <MainFooter></MainFooter>
         </div>
         
     )

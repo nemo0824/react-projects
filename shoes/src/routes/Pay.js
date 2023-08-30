@@ -4,13 +4,12 @@ import { Table } from "react-bootstrap"
 import Post from '../Address.js'
 import { useState } from 'react'
 import { CheckoutPage } from '../pages/Checkout.jsx';
-
+import MainFooter from '../MainFooter.js'
 function Pay(){
     let state = useSelector((state)=>{return state})
     console.log(state.userCart)
     let dispatch = useDispatch()
-    
-    const totalPrice = state.userCart.reduce((total, item) => {
+        const totalPrice = state.userCart.reduce((total, item) => {
         return total + item.price * item.count;
     }, 0);
 
@@ -18,7 +17,8 @@ function Pay(){
 
 
     const [enroll_company, setEnroll_company] = useState({
-        address:'',
+        address:'', 
+        extra: '',
     });
     
     const [popup, setPopup] = useState(false);
@@ -29,10 +29,27 @@ function Pay(){
             [e.target.name]:e.target.value,
         })
     }
+
+    const extrahandleInput = (e) => {
+        setEnroll_company({
+            ...enroll_company,
+            [e.target.name]:e.target.value,
+        })
+    }
+    
+    
+    
     
     const handleComplete = (data) => {
         setPopup(!popup);
     }
+
+     const handleCloseModal = () => {
+        setPopup(false); // 닫기 버튼을 클릭하면 모달을 닫기 위해 popup 상태를 false로 설정합니다
+    };
+    let fullAddress = enroll_company.address + enroll_company.extra
+
+
 
     return(
        
@@ -81,12 +98,18 @@ function Pay(){
         <div className="address_search" >
             <h4>주소 입력</h4>
              <input className="user_enroll_text" placeholder="주소"  type="text" required={true} name="address" onChange={handleInput} value={enroll_company.address}/>
+             <input className= "extra_address" placeholder="상세주소" name="extra" onChange={extrahandleInput} value={enroll_company.extra} ></input>
              <button onClick={handleComplete}>우편번호 찾기</button>
-             {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
+             {popup && <Post company={enroll_company} setcompany={setEnroll_company} handleCloseModal={handleCloseModal}></Post>}
+             <button onClick={()=>{
+                console.log(enroll_company)
+                console.log(fullAddress)
+             }}>데이터 확인</button>
              </div>
         </div>
-        <CheckoutPage totalPrice={totalPrice}></CheckoutPage>
+        <CheckoutPage totalPrice={totalPrice} fullAddress={fullAddress}></CheckoutPage>
         </div>
+        <MainFooter></MainFooter>
         </>
     )
 }

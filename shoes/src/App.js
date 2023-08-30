@@ -19,7 +19,7 @@ import { logoutUser } from './store';
 import { CheckoutPage } from './pages/Checkout';
 import { FailPage } from './pages/Fail';
 import { SuccessPage } from './pages/Success';
-
+import MainFooter from './MainFooter';
 
 
 
@@ -117,7 +117,7 @@ function App() {
 
               
             }}>상품 더보기 </button>
-            
+            <MainFooter></MainFooter>
         </>
       }>
         {/* 1. App.js에서 Route있던게 인식됨 그래서 Shop.js에 있는 Route안됨
@@ -149,7 +149,7 @@ function App() {
         
         <Route></Route>
       </Routes>
-
+      
 
       
     </div>
@@ -172,13 +172,7 @@ function Card(props){
 }
 //nested routes 경로/경로  이단경로 이상 
 
-function About(){
-  return(
-    <div>
-      <h4>회사정보</h4>
-    </div>
-  )
-}
+
 
 
 

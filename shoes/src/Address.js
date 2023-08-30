@@ -25,19 +25,23 @@ const Post = (props) => {
             ...props.company,
             address:fullAddress,
         })
+        props.handleCloseModal(); 
     }
+    const handleClose = () => {
+        // 부모로부터 전달된 함수를 호출하여 모달을 닫습니다
+        props.handleCloseModal();
+    };
 
     return (
         <>
-
-        <div >
-        
-            <DaumPostcode
-                className="postmodal"
-                autoClose
-                onComplete={complete} 
+       
+       <div className="postmodal">
+                <button className="close-button" onClick={handleClose}>x</button>
+                <DaumPostcode
+                    autoClose
+                    onComplete={complete}
                 />
-        </div>
+            </div>
         </>
     );
 };
