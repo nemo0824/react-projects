@@ -40,7 +40,7 @@ function App() {
      
       <Navbar bg='dark' data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">FE 임재원  BE 황수환</Navbar.Brand>
+          <Navbar.Brand href="#home">Shoes Store</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=> navigate('/')}>home</Nav.Link>
             <Nav.Link onClick={()=> navigate('/shop')}>Shop</Nav.Link>

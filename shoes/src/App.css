@@ -137,6 +137,7 @@
 
 #front-LIM{
   width: 50%;
+  margin-top: 30px;
 }
 .detail-btn-box{
   display: flex;
@@ -199,12 +200,40 @@
   width: 400px;
 }
 
+/* cart.js */
+.cart_table{
+  width: 100%;
+  border-top: solid 4px black;
+  margin-top: 40px;
+}
+
+.order_price{
+  width: 10px;
+  height: 100px;
+  border-radius: 2rem;
+}
+.order_price_num{
+  width: 50px;
+  height: 100px;
+  border-radius: 2rem;
+}
+.cart_price_table{
+  width: 50%;
+  border-top: solid 4px black;
+  margin-top: 40px;
+}
 
 /* pay.js payment  */
+.page_container{
+  margin-left: 50px;
+  margin-right: 50px;
+  
+}
+
 .paymentTable{
   width: 100%;
   border-top: solid 4px black;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 .payment{
   width: 150px;

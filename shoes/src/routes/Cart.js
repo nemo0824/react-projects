@@ -43,15 +43,16 @@ function Cart(){
 
 
     return(
-
-        <div>
+        <>
+        
+        <div className="page_container">
             <h3>{state.user.userId}의 장바구니</h3>
             
             
-            <Table>
+            <table className="cart_table">
                 <thead>
                     <tr>
-                        <th>번호</th>
+                        <th style={{ width: '100px' }}>번호</th>
                         <th>이미지</th>
                         <th>상품명</th>
                         <th>사이즈</th>
@@ -106,17 +107,30 @@ function Cart(){
                             
                         })
                     }
-                    <div >결제 금액  :{totalPrice} </div>
+                    
+
                 </tbody>
-            </Table> 
+            </table> 
+
+            <div className='totalPrice'>
+                        <table className='cart_price_table'>
+                             <tr>
+                                 <td className='order_price'>주문금액</td>
+                                 <td className='order_price_num'>{totalPrice} 원</td>
+                                 
+                        
+                             </tr>
+                        </table>
+                     </div>
             
            {/* 유저번호, 상품번호, 사이즈 ,  */}
            <button onClick={()=>{
             navigate('/pay')
            }}>결제하기</button>
+           </div>
            <MainFooter></MainFooter>
-        </div>
         
+        </>
     )
 }
 

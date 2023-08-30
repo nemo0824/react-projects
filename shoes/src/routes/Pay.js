@@ -55,6 +55,7 @@ function Pay(){
     return(
        
         <>
+        <div className='page_container'>  
         <h2>결제페이지 </h2>
         <div>
         <Table className='paymentTable'>
@@ -138,8 +139,12 @@ function Pay(){
         </div>
         <CheckoutPage totalPrice={totalPrice} fullAddress={fullAddress}></CheckoutPage>
         </div>
+
+        </div>
         <MainFooter></MainFooter>
+        
         </>
+        
     )
 }
 
