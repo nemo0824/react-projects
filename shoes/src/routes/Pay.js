@@ -81,13 +81,14 @@ function Pay(){
                                     <td>{state.userCart[i].size}</td>
                                     <td>{state.userCart[i].count} </td>
                                     <td>{state.userCart[i].price * state.userCart[i].count }</td>
-                                    
+                                    {console.log(state.userCart)}
                                     
                                 </tr>
                                 </>
                             )
                             
                         })
+                        
                     }
                     
                     

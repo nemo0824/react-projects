@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { loadPaymentWidget } from "@tosspayments/payment-widget-sdk";
 import { nanoid } from "nanoid";
+import axios from "axios";
+import {useSelector } from "react-redux"
 
 const selector = "#payment-widget";
 const clientKey = "test_ck_ex6BJGQOVD9xpR0XPORrW4w2zNbg";
@@ -10,7 +12,8 @@ export function CheckoutPage(props) {
   const paymentWidgetRef = useRef(null);
   const paymentMethodsWidgetRef = useRef(null);
   const [price, setPrice] = useState(props.totalPrice);
-
+  
+  let state = useSelector((state)=>{return state})
 
   useEffect(() => {
     (async () => {
@@ -51,7 +54,23 @@ export function CheckoutPage(props) {
       <button
         onClick={async () => {
           const paymentWidget = paymentWidgetRef.current;
-
+          const paymentServer = () =>{
+            axios.get('/cart/pay',{
+              params: {
+                  
+                  userTotalPrice : props.totalPrice,
+                  userAddress : props.fullAddress,
+                  userProduct : state.userCart,
+                  userNo : state.user.userNo
+                },
+          }) 
+            .then(response => {
+              console.log(response.data)
+              
+            })
+            .catch(error => console.log(error));
+            }
+            paymentServer()
           try {
             await paymentWidget?.requestPayment({
               orderId: nanoid(),
@@ -64,6 +83,7 @@ export function CheckoutPage(props) {
           } catch (error) {
             
           }
+          
         }}
       >
         결제하기
