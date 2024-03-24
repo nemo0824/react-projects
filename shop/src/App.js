@@ -49,21 +49,14 @@ function App() {
               <div className="container">
                 <div className="row">
                   {shoes.map(function (a, i) {
-                    return <Card shoes={shoes[i]} i={i + 1}></Card>;
+                    return <Card shoes={shoes[i]} i={i + 1} key={i}></Card>;
                   })}
                 </div>
               </div>
             </>
           }
         />
-        <Route
-          path="/detail"
-          element={
-            <>
-              <Detail></Detail>
-            </>
-          }
-        />
+        <Route path="/detail/:id" element={<Detail shoes={shoes}></Detail>} />
         <Route path="/about" element={<div>about 페이지</div>}></Route>
 
         <Route path="*" element={<div>없는페이지</div>} />
