@@ -8,12 +8,13 @@ import Navbar from "react-bootstrap/Navbar";
 import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./routes/Detail.js";
+import axios from "axios";
 // import About from "./routes/about.js";
 
 function App() {
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
-
+  let [clickCount, setClickCount] = useState(1);
   return (
     <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
@@ -53,6 +54,27 @@ function App() {
                   })}
                 </div>
               </div>
+              <button
+                onClick={() => {
+                  <p>로딩중</p>;
+                  axios
+                    .get("http://codingapple1.github.io/shop/data2.json")
+                    .then((response) => {
+                      console.log(response.data);
+                      let copy = [...shoes, ...response.data];
+                      setShoes(copy);
+                      setClickCount(clickCount + 1);
+                      console.log(clickCount);
+                      if (clickCount > 2) {
+                        alert("없음");
+                      }
+                    });
+                  <p>로딩 완료</p>;
+                }}
+                // ajax 요청이 실패할경우 ? .catch(()=>{console.log('실패')})
+              >
+                더보기
+              </button>
             </>
           }
         />
