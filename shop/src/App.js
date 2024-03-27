@@ -9,6 +9,7 @@ import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./routes/Detail.js";
 import axios from "axios";
+import Cart from "./routes/Cart.js";
 // import About from "./routes/about.js";
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
                     });
                   <p>로딩 완료</p>;
                 }}
+
                 // ajax 요청이 실패할경우 ? .catch(()=>{console.log('실패')})
               >
                 더보기
@@ -80,7 +82,7 @@ function App() {
         />
         <Route path="/detail/:id" element={<Detail shoes={shoes}></Detail>} />
         <Route path="/about" element={<div>about 페이지</div>}></Route>
-
+        <Route path="/cart" element={<Cart></Cart>} />
         <Route path="*" element={<div>없는페이지</div>} />
       </Routes>
     </div>
