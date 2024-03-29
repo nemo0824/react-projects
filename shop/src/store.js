@@ -6,12 +6,35 @@ let user = createSlice({
   // usestate랑 비슷한역할
   name: "user",
   initialState: "Lim",
+
+  //   state 수정하는 함수 만들기
+  reducers: {
+    changeName(state) {
+      return "john" + state;
+    },
+  },
 });
+
+export let { changeName } = user.actions;
 
 let stock = createSlice({
   name: "stock",
   initialState: [10, 11, 12],
 });
+
+let product = createSlice({
+  name: "product",
+  initialState: [
+    { id: 0, name: "white and Black", count: 2 },
+    { id: 1, name: "Grey Yordan", count: 1 },
+  ],
+  reducers: {
+    changeCount(state, action) {
+      state[action.payload].count++;
+    },
+  },
+});
+export let { changeCount } = product.actions;
 
 export default configureStore({
   reducer: {
@@ -19,5 +42,6 @@ export default configureStore({
     // 작명 : user.reducer
     user: user.reducer,
     stock: stock.reducer,
+    product: product.reducer,
   },
 });
