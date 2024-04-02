@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
@@ -16,6 +16,10 @@ function App() {
   let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
   let [clickCount, setClickCount] = useState(1);
+
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify([]));
+  }, []);
   return (
     <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
