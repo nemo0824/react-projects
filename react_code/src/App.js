@@ -3,43 +3,42 @@ import styles from "./App.module.css";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const onClick = () => setCount((prev) => prev + 1);
+  const [todo, setTodo] = useState("");
+  const [todos, setTodos] = useState([]);
+
   const onChange = (event) => {
-    setKeyword(event.target.value);
+    setTodo(event.target.value);
   };
-  console.log("all the time");
-
-  useEffect(() => {
-    console.log(" I Run Only once");
-  }, []);
-
-  useEffect(() => {
-    if (keyword !== "" && keyword.length > 5) {
-      console.log("Search For ", keyword);
+  const onSubmit = (event) => {
+    event.preventDefault();
+    if (todo === "") {
+      return;
     }
-  }, [keyword]);
+    setTodos((currentArray) => [todo, ...currentArray]);
+    setTodo("");
+  };
 
-  useEffect(() => {
-    console.log("I Run only Count Change");
-  }, [count]);
-
-  useEffect(() => {
-    console.log("1번만 시작때만");
-  }, []);
+  console.log(todos);
 
   return (
     <div>
-      <input
-        type="text"
-        value={keyword}
-        placeholder="Search here"
-        onChange={onChange}
-      ></input>
-      <h1 className={styles.title}>{count} </h1>
-      <button onClick={onClick}>Click me </button>
-      <Button text={"continue"} />
+      <h1>My To Dos ({todos.length})</h1>
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          placeholder="Write your to do "
+          onChange={onChange}
+          value={todo}
+        />
+
+        <button>Add To Do</button>
+      </form>
+      <hr />
+      <ul>
+        {todos.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
