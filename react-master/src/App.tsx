@@ -5,8 +5,8 @@ import Square from "./Square";
 
 function App() {
   return <>
-    <Circle bgColor="teal"/>
-    <Circle bgColor="tomato"/>
+    <Circle bgColor="teal" borderColor="black"/>
+    <Circle bgColor="tomato" text="not default value"/>
     <Square bgColor="blue"/>
     </>
 }
