@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import Circle from "./Circle";
 import Square from "./Square";
 import { text } from "stream/consumers";
-import Router from "./Router";
+import { Outlet } from "react-router-dom";
+import Header from "./components/Header";
 
 // interface DummyProps{
 //   text:string;
@@ -38,7 +39,8 @@ function App() {
 //  }
 
   return <div>
-    <Router/>
+    <Header/>
+    <Outlet/>
    
     </div>
 }
