@@ -1,0 +1,279 @@
+.main-bg{
+  height: 600px;
+  background-image: url(../src/img/ccc.jpg);
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+ 
+}
+
+.Login_form-wrapper{
+  margin-top: 100px;
+  justify-content: center;
+  align-items: center;
+}
+.Login_form{
+  margin: auto;
+  width: 500px;
+  background-color: #EEEFF1;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px;
+  
+}
+.Login_title{
+  background-color: black;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: white;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.input{
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+}
+.btn-submit{
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+  background-color: black;
+  color: white;
+}
+.login_atage{
+ display: flex;
+ justify-content: space-around;
+}
+
+.enroll_list{
+  height: 10px;
+  text-align: left;
+}
+
+.enroll {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.App {
+  text-align: center;
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+  /* border: 5px solid red; */
+  height: 100%;
+
+}
+
+.left_content {
+  width: 20%;
+  /* border: 5px solid red; */
+  position: relative;
+  height: 100%; 
+}
+
+.sidebar{
+  position: fixed;
+  top: calc(40% + 100px);
+  left: 0;
+  border: 5px solid blue;
+  width: 20%;
+  border-radius: 3rem;
+  z-index: 10;
+  
+}
+.row{
+  list-style-type: none;
+}
+.right_content{
+  width: 80%;
+  height: 100%;
+  /* border: 5px solid red; */
+}
+
+
+.shop_bg{
+  height: 600px;
+  background-image: url(../src/img/bg-img.png);
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  z-index: 40;
+}
+.alertMessage{
+  color: red;
+}
+.sizestock{
+  display: flex;
+  justify-content: space-between;
+}
+
+#footer{
+  background-color: #212529;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  text-align: left; 
+  width: 100%;
+  position: relative;
+  transform: translateY(0%);
+  margin-top: 100px;
+}
+
+
+.sgcolor{
+  background-color: #212529;
+  color: white;
+}
+
+#front-LIM{
+  width: 50%;
+  margin-top: 30px;
+}
+.detail-btn-box{
+  display: flex;
+  justify-content: space-around;
+}
+#cart-btn{
+  width: 40%;
+ 
+}
+#order-btn{
+  width: 40%;
+}
+
+.exchange-title{
+  border-bottom: #282c34;
+}
+#returnTable{
+  border: 1px solid black;
+  width: 100%;
+}
+#returnTable>tr, td{
+  border: 1px solid black;
+}
+.postmodal{
+  background: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  right: 10px;
+  top: 10%; 
+  width: 100%; 
+  padding: 20px; 
+  border-radius: 5px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+.close-button {
+  position: absolute;
+  width: 40px;
+  top: 0px;
+  right: 10px;
+  border-radius: 3rem;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.totalPrice{
+  width: 100%;
+  height: 200px;
+}
+#address_content{
+  width: 100%;
+  height: 200px;
+}
+.address_search{
+  display: flex;
+  justify-content: center;
+  
+}
+
+
+.user_enroll_text{
+  width: 400px;
+}
+
+/* cart.js */
+.cart_table{
+  width: 100%;
+  border-top: solid 4px black;
+  margin-top: 40px;
+}
+
+.order_price{
+  width: 10px;
+  height: 100px;
+  border-radius: 2rem;
+}
+.order_price_num{
+  width: 50px;
+  height: 100px;
+  border-radius: 2rem;
+}
+.cart_price_table{
+  width: 50%;
+  border-top: solid 4px black;
+  margin-top: 40px;
+}
+
+/* pay.js payment  */
+.page_container{
+  margin-left: 50px;
+  margin-right: 50px;
+  
+}
+
+.paymentTable{
+  width: 100%;
+  border-top: solid 4px black;
+  margin-top: 40px;
+}
+.payment{
+  width: 150px;
+  height: 100px;
+}
+.payment-number{
+  width: 200px;
+  height: 100px;
+}
+.payorder{
+  border-top: solid 4px black;
+  margin-top: 50px
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

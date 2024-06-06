@@ -1,0 +1,89 @@
+.App {
+  text-align: center;
+  
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.bg-img-real{
+  height: 20vw;
+  width: 100%;
+  background-image: url('./bg.jpg');
+  background-size: contain;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.CardForm{
+  display: flex;
+  justify-content: left;
+  margin-top: 50px;
+  max-height: 603px;
+ 
+}
+.Card{
+  width: 33vw;
+  margin-left: 100px;
+  height: 200px;
+  overflow-y: scroll;
+  
+  
+}
+.time{
+  font-size: 20px;
+}
+.event{
+  font-size: 20px;
+}
+
+.Profile{
+  margin-top: 50px;
+  margin-left: 100px;
+  
+}
+
+.layout{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+  
+}
+.TabIntroduce{
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 100px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
